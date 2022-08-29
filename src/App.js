@@ -1,7 +1,7 @@
-import Say from "./Say";
+import FCEventPractice from "./FCEventPractice";
 
 const App = () => {
-  return <Say />;
+  return <FCEventPractice />;
 };
 
 export default App;
