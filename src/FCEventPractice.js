@@ -48,6 +48,14 @@ const FCEventPractice = () => {
         onKeyPress={onKeyPress}
       />
       <button onClick={onClick}>확인</button>
+      <div>
+        <b>이름:</b>
+        {username}
+      </div>
+      <div>
+        <b>닉네임:</b>
+        {message}
+      </div>
     </div>
   );
 };

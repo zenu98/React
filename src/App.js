@@ -1,7 +1,7 @@
-import Counter from "./Counter";
+import FCEventPractice from "./FCEventPractice";
 
 const App = () => {
-  return <Counter />;
+  return <FCEventPractice />;
 };
 
 export default App;
