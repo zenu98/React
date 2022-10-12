@@ -13,6 +13,7 @@ const data = {
 
 const Profile = () => {
   const params = useParams();
+  console.log(params);
   const profile = data[params.aaoo];
 
   return (
