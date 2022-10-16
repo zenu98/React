@@ -2,12 +2,15 @@ import React, { useState, useEffect } from "react";
 import axios from "../api/axios";
 import "./Row.css";
 import { MdArrowBackIosNew, MdArrowForwardIos } from "react-icons/md";
+import MovieModal from "./MovieModal";
 const Row = ({ isLargeRow, title, id, fetchUrl }) => {
   const [movies, setMovies] = useState([]);
+  const [modalOpen, setModalOpen] = useState(false);
+  const [movieSelected, setMovieSelected] = useState({});
 
   useEffect(() => {
     fetchMovieData();
-  }, []);
+  }, [fetchUrl]);
 
   const fetchMovieData = async () => {
     try {
@@ -16,6 +19,11 @@ const Row = ({ isLargeRow, title, id, fetchUrl }) => {
     } catch (e) {
       console.log(e);
     }
+  };
+
+  const handleClick = (movie) => {
+    setModalOpen(true);
+    setMovieSelected(movie);
   };
 
   return (
@@ -41,6 +49,7 @@ const Row = ({ isLargeRow, title, id, fetchUrl }) => {
                 isLargeRow ? movie.poster_path : movie.backdrop_path
               }`}
               alt={movie.name}
+              onClick={() => handleClick(movie)}
             />
           ))}
         </div>
@@ -55,6 +64,10 @@ const Row = ({ isLargeRow, title, id, fetchUrl }) => {
           </span>
         </div>
       </div>
+
+      {modalOpen && (
+        <MovieModal {...movieSelected} setModalOpen={setModalOpen} />
+      )}
     </section>
   );
 };
