@@ -23,7 +23,7 @@ const Todos = ({
     <div>
       <form onSubmit={onSubmit}>
         <input />
-        <button type="submit">등록</button>
+        <button type="sumbit">등록</button>
       </form>
       <div>
         <TodoItem />
@@ -35,4 +35,5 @@ const Todos = ({
     </div>
   );
 };
+
 export default Todos;
