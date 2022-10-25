@@ -3,16 +3,17 @@ import { useParams } from "react-router-dom";
 import axios from "../../api/axios";
 
 export default function DetailPage() {
-  const { movieId } = useParams();
+  const params = useParams();
+  console.log(params);
   const [movie, setMovie] = useState({});
 
   useEffect(() => {
     async function fetchData() {
-      const request = await axios.get(`/movie/${movieId}`);
+      const request = await axios.get(`/movie/${params.movieId}`);
       setMovie(request.data);
     }
     fetchData();
-  }, [movieId]);
+  }, [params]);
 
   if (!movie) return <div>...loading</div>;
 
