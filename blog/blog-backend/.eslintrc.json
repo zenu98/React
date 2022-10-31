@@ -1,8 +1,8 @@
 {
     "env": {
-        "browser": true,
-        "commonjs": true,
-        "es2021": true
+        "commonjs":true,
+        "es6":true,
+        "node":true
     },
     "extends": ["eslint:recommended","prettier"],
     "globals":{
@@ -10,7 +10,8 @@
         "SharedArrayBuffer":"readonly"
     },
     "parserOptions": {
-        "ecmaVersion": "latest"
+        "ecmaVersion": "latest",
+        "sourceType": "module"
     },
     "rules": {
         "no-unused-vars":"warn",
