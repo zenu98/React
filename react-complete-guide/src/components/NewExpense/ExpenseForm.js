@@ -64,7 +64,7 @@ const ExpenseForm = (props) => {
           />
         </div>
         <div className="new-expense__control">
-          <label>수량</label>
+          <label>가격</label>
           <input
             value={enteredAmount}
             type="number"
