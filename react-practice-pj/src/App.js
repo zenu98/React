@@ -23,10 +23,10 @@ function App() {
   }
 
   return (
-    <div>
+    <>
       <InfoInput onAddList={onAddListHandler} />
       {content}
-    </div>
+    </>
   );
 }
 
