@@ -11,7 +11,7 @@ const MealItemForm = (props) => {
     e.preventDefault();
 
     const enteredAmount = amountInputRef.current.value;
-    console.log(enteredAmount);
+
     const enteredAmountToNumber = +enteredAmount;
 
     if (
