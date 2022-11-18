@@ -16,9 +16,12 @@ const HeaderCartButton = (props) => {
       return;
     }
     setBtn(true);
-    setTimeout(() => {
+    const timer = setTimeout(() => {
       setBtn(false);
     }, 300);
+    return () => {
+      clearTimeout(timer);
+    };
   }, [items]);
 
   return (
