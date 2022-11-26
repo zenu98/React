@@ -4,7 +4,9 @@ import { useContext } from "react";
 import CartContext from "../../../store/cart-context";
 const MealItem = (props) => {
   const cartCtx = useContext(CartContext);
-  const price = `${props.price.toFixed(2)}원`;
+  const price = `${props.price
+    .toString()
+    .replace(/\B(?<!\.\d*)(?=(\d{3})+(?!\d))/g, ",")}원`;
   const addToCartHandler = (amount) => {
     cartCtx.addItem({
       id: props.id,
