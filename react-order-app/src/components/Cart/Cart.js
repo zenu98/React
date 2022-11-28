@@ -1,12 +1,17 @@
+import React, { useContext, useState } from "react";
 import classes from "./Cart.module.css";
-import { useContext } from "react";
+
 import Modal from "../UI/Modal";
 import CartItem from "./CartItem";
 import CartContext from "../../store/cart-context";
+import Checkout from "./Checkout";
 const Cart = (props) => {
+  const [isCheckout, setIsCheckout] = useState(false);
+  const [isSubmit, setIsSubmit] = useState(false);
+  const [didSubmit, setDidSubmit] = useState(false);
   const cartCtx = useContext(CartContext);
 
-  const totalAmount = `${cartCtx.totalAmount.toFixed(2)}원`;
+  const totalAmount = `￦${cartCtx.totalAmount} `;
   const hasItem = cartCtx.items.length > 0;
 
   const cartItemRemoveHandler = (id) => {
@@ -15,6 +20,41 @@ const Cart = (props) => {
   const cartItemAddHandler = (item) => {
     cartCtx.addItem({ ...item, amount: 1 });
   };
+
+  const orderHandler = () => {
+    setIsCheckout(true);
+  };
+
+  const submitOrderHandler = async (userData) => {
+    setIsSubmit(true);
+
+    await fetch(
+      "https://react-http-ca2bd-default-rtdb.firebaseio.com/orders.json",
+      {
+        method: "POST",
+        body: JSON.stringify({
+          user: userData,
+          orderedItems: cartCtx.items,
+        }),
+      }
+    );
+
+    setIsSubmit(false);
+    setDidSubmit(true);
+  };
+
+  const modalActions = (
+    <div className={classes.actions}>
+      <button className={classes["button--alt"]} onClick={props.onClose}>
+        닫기
+      </button>
+      {hasItem && (
+        <button className={classes.button} onClick={orderHandler}>
+          주문
+        </button>
+      )}
+    </div>
+  );
 
   const cartItems = (
     <ul className={classes["cart-items"]}>
@@ -30,19 +70,29 @@ const Cart = (props) => {
       ))}
     </ul>
   );
-  return (
-    <Modal onClose={props.onClose}>
+
+  const cartModalContent = (
+    <React.Fragment>
       {cartItems}
       <div className={classes.total}>
-        <span>총 수량</span>
+        <span>총합</span>
         <span>{totalAmount}</span>
       </div>
-      <div className={classes.actions}>
-        <button className={classes["button--alt"]} onClick={props.onClose}>
-          닫기
-        </button>
-        {hasItem && <button className={classes.button}>주문</button>}
-      </div>
+      {isCheckout && (
+        <Checkout onConfirm={submitOrderHandler} onCancle={props.onClose} />
+      )}
+      {!isCheckout && modalActions}
+    </React.Fragment>
+  );
+
+  const submitCartModalContent = <p>주문 접수 중...</p>;
+  const didSubmitCartModalContent = <p>주문 완료!</p>;
+
+  return (
+    <Modal onClose={props.onClose}>
+      {!isSubmit && !didSubmit && cartModalContent}
+      {isSubmit && submitCartModalContent}
+      {!isSubmit && didSubmit && didSubmitCartModalContent}
     </Modal>
   );
 };

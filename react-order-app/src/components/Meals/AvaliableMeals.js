@@ -6,12 +6,17 @@ import { useEffect, useState } from "react";
 const AvailableMeals = () => {
   const [meals, setMeals] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
+  const [hasError, setHasError] = useState(null);
   useEffect(() => {
     const fetchMeals = async () => {
       setIsLoading(true);
       const response = await fetch(
         "https://react-http-ca2bd-default-rtdb.firebaseio.com/meals.json"
       );
+
+      if (!response.ok) {
+        throw new Error("오류 발생!");
+      }
       const responseData = await response.json();
       const loadedMeals = [];
       for (const key in responseData) {
@@ -25,7 +30,11 @@ const AvailableMeals = () => {
       setMeals(loadedMeals);
       setIsLoading(false);
     };
-    fetchMeals();
+
+    fetchMeals().catch((error) => {
+      setIsLoading(false);
+      setHasError(error.message);
+    });
   }, []);
   if (isLoading) {
     return (
@@ -34,6 +43,15 @@ const AvailableMeals = () => {
       </section>
     );
   }
+
+  if (hasError) {
+    return (
+      <section className={classes.MealsError}>
+        <p>{hasError}</p>
+      </section>
+    );
+  }
+
   const mealsList = meals.map((items) => (
     <MealItem
       id={items.id}
