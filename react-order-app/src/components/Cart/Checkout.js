@@ -1,3 +1,4 @@
+import { useState } from "react";
 import useInput from "../../hooks/use-input";
 
 import classes from "./Checkout.module.css";
@@ -5,6 +6,13 @@ import classes from "./Checkout.module.css";
 const isNotEmpty = (value) => value.trim() !== "";
 
 const Checkout = (props) => {
+  const [formInputValidity, setFormInputValidity] = useState({
+    name: true,
+    post: true,
+    street: true,
+    detail: true,
+  });
+
   const {
     value: nameValue,
     isValid: nameIsValid,
@@ -49,6 +57,13 @@ const Checkout = (props) => {
   const confirmHandler = (e) => {
     e.preventDefault();
 
+    setFormInputValidity({
+      name: nameIsValid,
+      street: streetIsValid,
+      post: postIsValid,
+      detail: detailIsValid,
+    });
+
     if (!formIsValid) {
       return;
     }
@@ -66,21 +81,21 @@ const Checkout = (props) => {
     resetStreet();
   };
 
-  const nameClasses = nameHasError
-    ? `${classes.control} ${classes.invalid}`
-    : `${classes.control}`;
+  const nameClasses = `${classes.control} ${
+    nameHasError || !formInputValidity.name ? classes.invalid : ""
+  }`;
 
-  const streetClasses = streetHasError
-    ? `${classes.control} ${classes.invalid}`
-    : `${classes.control}`;
+  const streetClasses = `${classes.control} ${
+    streetHasError || !formInputValidity.street ? classes.invalid : ""
+  }`;
 
-  const postClasses = postHasError
-    ? `${classes.control} ${classes.invalid}`
-    : `${classes.control}`;
+  const postClasses = `${classes.control} ${
+    postHasError || !formInputValidity.post ? classes.invalid : ""
+  }`;
 
-  const detailClasses = detailHasError
-    ? `${classes.control} ${classes.invalid}`
-    : `${classes.control}`;
+  const detailClasses = `${classes.control} ${
+    detailHasError || !formInputValidity.detail ? classes.invalid : ""
+  }`;
 
   return (
     <form className={classes.form} onSubmit={confirmHandler}>
@@ -93,7 +108,7 @@ const Checkout = (props) => {
           onChange={nameChangeHandler}
           onBlur={nameBlurHandler}
         />
-        {nameHasError && (
+        {(nameHasError || !formInputValidity.name) && (
           <p className={classes["error-text"]}>내용이 비어있습니다.</p>
         )}
       </div>

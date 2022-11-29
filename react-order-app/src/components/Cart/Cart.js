@@ -41,6 +41,7 @@ const Cart = (props) => {
 
     setIsSubmit(false);
     setDidSubmit(true);
+    cartCtx.clearCart();
   };
 
   const modalActions = (
@@ -85,8 +86,19 @@ const Cart = (props) => {
     </React.Fragment>
   );
 
-  const submitCartModalContent = <p>주문 접수 중...</p>;
-  const didSubmitCartModalContent = <p>주문 완료!</p>;
+  const submitCartModalContent = (
+    <p className={classes.ordertext}>주문 접수 중...</p>
+  );
+  const didSubmitCartModalContent = (
+    <React.Fragment>
+      <p className={classes.ordertext}>주문 완료!</p>
+      <div className={classes.actions}>
+        <button className={classes.button} onClick={props.onClose}>
+          닫기
+        </button>
+      </div>
+    </React.Fragment>
+  );
 
   return (
     <Modal onClose={props.onClose}>
