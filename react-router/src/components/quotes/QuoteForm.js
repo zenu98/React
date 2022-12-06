@@ -1,10 +1,12 @@
-import { useRef } from "react";
+import { Fragment, useRef, useState } from "react";
+import { Prompt } from "react-router-dom";
 
 import Card from "../UI/Card";
 import LoadingSpinner from "../UI/LoadingSpinner";
 import classes from "./QuoteForm.module.css";
 
 const QuoteForm = (props) => {
+  const [isFocusing, setIsFocusing] = useState(false);
   const authorInputRef = useRef();
   const textInputRef = useRef();
 
@@ -19,28 +21,48 @@ const QuoteForm = (props) => {
     props.onAddQuote({ author: enteredAuthor, text: enteredText });
   }
 
-  return (
-    <Card>
-      <form className={classes.form} onSubmit={submitFormHandler}>
-        {props.isLoading && (
-          <div className={classes.loading}>
-            <LoadingSpinner />
-          </div>
-        )}
+  const formFocusedHandler = () => {
+    setIsFocusing(true);
+  };
 
-        <div className={classes.control}>
-          <label htmlFor="author">Author</label>
-          <input type="text" id="author" ref={authorInputRef} />
-        </div>
-        <div className={classes.control}>
-          <label htmlFor="text">Text</label>
-          <textarea id="text" rows="5" ref={textInputRef}></textarea>
-        </div>
-        <div className={classes.actions}>
-          <button className="btn">Add Quote</button>
-        </div>
-      </form>
-    </Card>
+  const finishHandler = () => {
+    setIsFocusing(false);
+  };
+
+  return (
+    <Fragment>
+      <Prompt
+        when={isFocusing}
+        message={(location) => "이 페이지를 떠나겠습니까?"}
+      />
+      <Card>
+        <form
+          onFocus={formFocusedHandler}
+          className={classes.form}
+          onSubmit={submitFormHandler}
+        >
+          {props.isLoading && (
+            <div className={classes.loading}>
+              <LoadingSpinner />
+            </div>
+          )}
+
+          <div className={classes.control}>
+            <label htmlFor="author">Author</label>
+            <input type="text" id="author" ref={authorInputRef} />
+          </div>
+          <div className={classes.control}>
+            <label htmlFor="text">Text</label>
+            <textarea id="text" rows="5" ref={textInputRef}></textarea>
+          </div>
+          <div className={classes.actions}>
+            <button onClick={finishHandler} className="btn">
+              Add Quote
+            </button>
+          </div>
+        </form>
+      </Card>
+    </Fragment>
   );
 };
 
