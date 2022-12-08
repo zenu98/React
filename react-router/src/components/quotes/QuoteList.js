@@ -30,7 +30,7 @@ const QuoteList = (props) => {
     //   `${location.pathname}?sort=${isSortingAscending ? "desc" : "asc"}`
     // );
   };
-  console.log(location.pathname);
+
   return (
     <Fragment>
       <div className={classes.sorting}>

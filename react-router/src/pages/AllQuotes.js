@@ -26,9 +26,10 @@ const AllQuotes = () => {
   if (error) {
     return <p className="centered focused">{error}</p>;
   }
-  if (status === "completed" && (!loadedQuotes || loadedQuotes.lenth === 0)) {
+  if (status === "completed" && (!loadedQuotes || loadedQuotes.length === 0)) {
     return <NoQuotesFound />;
   }
+
   return <QuoteList quotes={loadedQuotes} />;
 };
 
