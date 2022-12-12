@@ -1,6 +1,7 @@
 // our-domain.com/new-album
 import { useRouter } from "next/router";
 import NewAlbumForm from "../../components/albums/NewAlbumForm";
+
 function NewAlbumPage() {
   const router = useRouter();
 

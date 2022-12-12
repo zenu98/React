@@ -31,19 +31,19 @@ function NewAlbumForm(props) {
     <Card>
       <form className={classes.form} onSubmit={submitHandler}>
         <div className={classes.control}>
-          <label htmlFor="title">Meetup Title</label>
+          <label htmlFor="title">제목</label>
           <input type="text" required id="title" ref={titleInputRef} />
         </div>
         <div className={classes.control}>
-          <label htmlFor="image">Meetup Image</label>
+          <label htmlFor="image">이미지 경로</label>
           <input type="url" required id="image" ref={imageInputRef} />
         </div>
         <div className={classes.control}>
-          <label htmlFor="address">Address</label>
+          <label htmlFor="address">주소</label>
           <input type="text" required id="address" ref={addressInputRef} />
         </div>
         <div className={classes.control}>
-          <label htmlFor="description">Description</label>
+          <label htmlFor="description">설명</label>
           <textarea
             id="description"
             required

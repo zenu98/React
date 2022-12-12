@@ -1,14 +1,34 @@
 import { MongoClient, ObjectId } from "mongodb";
+import { useRouter } from "next/router";
 
 import AlbumDetail from "../../components/albums/AlbumDetail";
 
 const DetailPage = (props) => {
+  const router = useRouter();
+
+  const albumData = router.query.albumId;
+
+  const removeAlbumHandler = async (albumData) => {
+    const response = await fetch("/api/remove-album", {
+      method: "DELETE",
+      body: JSON.stringify.albumData,
+      headers: {
+        "Content-Type": "application/json",
+      },
+    });
+    const data = await response.json();
+
+    console.log(data);
+
+    router.push("/");
+  };
   return (
     <AlbumDetail
       image={props.albumsDetail.image}
       title={props.albumsDetail.title}
       address={props.albumsDetail.address}
       description={props.albumsDetail.description}
+      onClick={removeAlbumHandler}
     />
   );
 };

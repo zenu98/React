@@ -1,26 +1,14 @@
 import AlbumList from "../components/albums/AlbumList";
+import NoData from "../components/albums/NoData";
 import { MongoClient } from "mongodb";
-const DUMMY = [
-  {
-    id: "m1",
-    title: "A First",
-    image:
-      "https://cafe24img.poxo.com/ybmbnc/web/product/tiny/202208/f81e349b702e7f9c3a811bdf170273b3.jpg",
-    address: "abc",
-    description: "mococo1",
-  },
-  {
-    id: "m2",
-    title: "A Second",
-    image:
-      "https://cafe24img.poxo.com/ybmbnc/web/product/tiny/202208/f81e349b702e7f9c3a811bdf170273b3.jpg",
-    address: "abcd",
-    description: "mococo2",
-  },
-];
 
 function HomePage(props) {
-  return <AlbumList albums={props.albums} />;
+  const data = props.albums;
+  if (data.length !== 0) {
+    return <AlbumList albums={data} />;
+  } else {
+    return <NoData />;
+  }
 }
 
 // export async function getServerSideProps(context) {
@@ -59,7 +47,7 @@ export async function getStaticProps() {
         id: item._id.toString(),
       })),
     },
-    revalidate: 1,
+    revalidate: 1000,
   };
 }
 

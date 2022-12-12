@@ -7,10 +7,10 @@ function MainNavigation() {
       <nav>
         <ul>
           <li>
-            <Link href="/">Albums</Link>
+            <Link href="/">목록</Link>
           </li>
           <li>
-            <Link href="/new-meetup">Add</Link>
+            <Link href="/new-album">추가</Link>
           </li>
         </ul>
       </nav>
