@@ -1,6 +1,7 @@
 import { useRef } from "react";
+import { useRouter } from "next/router";
 
-import Card from "../ui/Card";
+import FormCard from "../ui/FormCard";
 import classes from "./NewAlbumForm.module.css";
 
 function NewAlbumForm(props) {
@@ -22,13 +23,14 @@ function NewAlbumForm(props) {
       image: enteredImage,
       address: enteredAddress,
       description: enteredDescription,
+      date: new Date(),
     };
 
     props.onAddAlbum(albumData);
   }
 
   return (
-    <Card>
+    <FormCard>
       <form className={classes.form} onSubmit={submitHandler}>
         <div className={classes.control}>
           <label htmlFor="title">제목</label>
@@ -55,7 +57,7 @@ function NewAlbumForm(props) {
           <button>Add Album</button>
         </div>
       </form>
-    </Card>
+    </FormCard>
   );
 }
 

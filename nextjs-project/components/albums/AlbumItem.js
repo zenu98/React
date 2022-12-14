@@ -19,6 +19,7 @@ function AlbumItem(props) {
         <div className={classes.content}>
           <h3>{props.title}</h3>
           <address>{props.address}</address>
+          <h1>{props.date}</h1>
         </div>
         <div className={classes.actions}>
           <button onClick={showDetailHandler}>상세보기</button>

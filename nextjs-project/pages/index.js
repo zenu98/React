@@ -45,9 +45,10 @@ export async function getStaticProps() {
         address: item.address,
         image: item.image,
         id: item._id.toString(),
+        date: item.date.substr(0, 10),
       })),
     },
-    revalidate: 1000,
+    revalidate: 1,
   };
 }
 

@@ -11,6 +11,7 @@ function AlbumList(props) {
           image={item.image}
           title={item.title}
           address={item.address}
+          date={item.date}
         />
       ))}
     </ul>

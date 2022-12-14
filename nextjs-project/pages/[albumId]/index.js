@@ -6,12 +6,10 @@ import AlbumDetail from "../../components/albums/AlbumDetail";
 const DetailPage = (props) => {
   const router = useRouter();
 
-  const albumData = router.query.albumId;
-
-  const removeAlbumHandler = async (albumData) => {
+  const removeAlbumHandler = async () => {
     const response = await fetch("/api/remove-album", {
       method: "DELETE",
-      body: JSON.stringify.albumData,
+      body: JSON.stringify(),
       headers: {
         "Content-Type": "application/json",
       },
@@ -28,6 +26,7 @@ const DetailPage = (props) => {
       title={props.albumsDetail.title}
       address={props.albumsDetail.address}
       description={props.albumsDetail.description}
+      id={props.albumsDetail.id}
       onClick={removeAlbumHandler}
     />
   );
