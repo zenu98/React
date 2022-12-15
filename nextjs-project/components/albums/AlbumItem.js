@@ -11,21 +11,23 @@ function AlbumItem(props) {
   };
 
   return (
-    <li className={classes.item}>
+    <div className={classes.item}>
       <Card>
-        <div className={classes.image}>
-          <img src={props.image} alt={props.title} />
-        </div>
-        <div className={classes.content}>
-          <h3>{props.title}</h3>
-          <address>{props.address}</address>
-          <h1>{props.date}</h1>
-        </div>
-        <div className={classes.actions}>
-          <button onClick={showDetailHandler}>상세보기</button>
+        <div className={classes.container}>
+          <div className={classes.image}>
+            <img src={props.image} alt={props.title} />
+          </div>
+          <div className={classes.content}>
+            <h3>{props.title}</h3>
+            <address>{props.address}</address>
+            <h1>{props.date}</h1>
+          </div>
+          <div className={classes.actions}>
+            <button onClick={showDetailHandler}>상세보기</button>
+          </div>
         </div>
       </Card>
-    </li>
+    </div>
   );
 }
 
