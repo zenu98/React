@@ -8,8 +8,7 @@ const Search = React.memo((props) => {
   const [enteredFilter, setEnteredFilter] = useState("");
   const inputRef = useRef();
   useEffect(() => {
-    console.log("rendering");
-    setTimeout(() => {
+    const timer = setTimeout(() => {
       if (enteredFilter === inputRef.current.value) {
         const query =
           enteredFilter.length === 0
@@ -33,6 +32,9 @@ const Search = React.memo((props) => {
           });
       }
     }, 500);
+    return () => {
+      clearTimeout(timer);
+    };
   }, [enteredFilter, onLoad, inputRef]);
 
   return (
