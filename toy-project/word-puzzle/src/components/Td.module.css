@@ -19,3 +19,13 @@
   margin-right: 10px;
   margin-bottom: 10px;
 }
+.datas {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  width: 90px;
+  height: 90px;
+  background-color: red;
+  margin-right: 10px;
+  margin-bottom: 10px;
+}
