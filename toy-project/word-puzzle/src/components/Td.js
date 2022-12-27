@@ -4,8 +4,10 @@ import classes from "./Td.module.css";
 const Td = (props) => {
   const { onClick } = props;
   const [data, setData] = useState([]);
-  const [dataClick, setDataClick] = useState([]);
-  console.log(dataClick);
+  const [wordArr, setWordArr] = useState([]);
+
+  const [buttonCss, setButtonCss] = useState([]);
+  console.log(buttonCss);
 
   useEffect(() => {
     console.log("useeffect");
@@ -34,28 +36,57 @@ const Td = (props) => {
     setData(dataArr);
   }, []);
 
+  useEffect(() => {
+    console.log("useEffect");
+    let chr = "";
+    wordArr.map(({ word }) => (chr += word));
+    onClick(chr);
+    console.log(wordArr);
+  }, [onClick, wordArr]);
+
   const clickHandler = (e) => {
-    setDataClick(e.target.value);
-    console.log(dataClick);
+    console.log("click");
+
+    const idList = [];
+    for (const key in wordArr) {
+      idList.push(wordArr[key].id);
+    }
+    console.log(idList);
+
+    if (idList.includes(e.target.name)) {
+      setButtonCss((prev) => prev.filter((a) => a !== e.target.name));
+      setWordArr((prev) => prev.filter((a) => a.id !== e.target.name));
+    } else {
+      setButtonCss((prev) => [...prev, e.target.name]);
+      setWordArr((prev) => [
+        ...prev,
+        { id: e.target.name, word: e.target.value },
+      ]);
+    }
   };
 
-  useEffect(() => {
-    onClick(dataClick);
-  }, [onClick, dataClick]);
-
   return (
-    <div className={classes.dataTable}>
-      {data.map(({ id, word }) => (
-        <button
-          key={id}
-          value={word}
-          className={` ${classes.data}`}
-          onClick={clickHandler}
-        >
-          {word}
-        </button>
-      ))}
-    </div>
+    <>
+      <div className={classes.dataTable}>
+        {data.map((item) => (
+          <button
+            type="button"
+            name={item.id}
+            key={item.id}
+            value={item.word}
+            className={`${
+              buttonCss.includes(item.id) ? classes.datas : classes.data
+            }`}
+            onClick={clickHandler}
+          >
+            {item.word}
+          </button>
+        ))}
+      </div>
+      <form>
+        <input />
+      </form>
+    </>
   );
 };
 

@@ -4,11 +4,12 @@ import ReSultForm from "./ResultForm";
 import classes from "./Table.module.css";
 
 const Table = () => {
-  const [word, setWord] = useState("");
+  const [word, setWord] = useState([]);
+  console.log(word);
 
   const clickHandler = useCallback((word) => {
-    setWord((prev) => prev + word);
-    console.log(word);
+    console.log("useCallback");
+    setWord(word);
   }, []);
 
   const resetHandler = () => {
