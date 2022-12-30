@@ -5,9 +5,10 @@ const Td = (props) => {
   const { onClick } = props;
   const [data, setData] = useState([]);
   const [wordArr, setWordArr] = useState([]);
-
+  const [disabledBtn, setDisabledBtn] = useState([]);
   const [buttonCss, setButtonCss] = useState([]);
   console.log(buttonCss);
+  console.log(disabledBtn);
 
   useEffect(() => {
     console.log("useeffect");
@@ -58,10 +59,27 @@ const Td = (props) => {
       setWordArr((prev) => prev.filter((a) => a.id !== e.target.name));
     } else {
       setButtonCss((prev) => [...prev, e.target.name]);
+
       setWordArr((prev) => [
         ...prev,
         { id: e.target.name, word: e.target.value },
       ]);
+    }
+  };
+
+  const submitHanlder = (e) => {
+    e.preventDefault();
+    if (props.word === "사과") {
+      buttonCss.map((id) => {
+        return (
+          setWordArr((prev) => prev.filter((a) => a.id !== id)),
+          setDisabledBtn((prev) => [...prev, id])
+        );
+      });
+
+      props.onReset();
+    } else {
+      alert("땡");
     }
   };
 
@@ -70,6 +88,7 @@ const Td = (props) => {
       <div className={classes.dataTable}>
         {data.map((item) => (
           <button
+            disabled={disabledBtn.includes(item.id)}
             type="button"
             name={item.id}
             key={item.id}
@@ -83,8 +102,11 @@ const Td = (props) => {
           </button>
         ))}
       </div>
-      <form>
-        <input />
+      <form onSubmit={submitHanlder} className={classes.input}>
+        <div>
+          <input type="text" id="word" value={props.word} readOnly />
+          <button>확인</button>
+        </div>
       </form>
     </>
   );

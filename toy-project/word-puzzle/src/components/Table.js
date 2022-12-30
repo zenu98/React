@@ -1,6 +1,6 @@
 import React, { useState, useCallback } from "react";
 import Td from "./Td";
-import ReSultForm from "./ResultForm";
+
 import classes from "./Table.module.css";
 
 const Table = () => {
@@ -18,8 +18,7 @@ const Table = () => {
 
   return (
     <div className={classes.center}>
-      <Td onClick={clickHandler} />
-      <ReSultForm word={word} onReset={resetHandler} />
+      <Td onClick={clickHandler} word={word} onReset={resetHandler} />
     </div>
   );
 };
