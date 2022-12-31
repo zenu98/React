@@ -4,14 +4,13 @@ import classes from "./Td.module.css";
 const Td = (props) => {
   const { onClick } = props;
   const [dataList, setDataList] = useState([]);
-  const [data, setData] = useState([]);
-  const [wordArr, setWordArr] = useState([]);
+  const [chrList, setChrList] = useState([]);
+  const [clickedData, setClickedData] = useState([]);
   const [disabledBtn, setDisabledBtn] = useState([]);
-  const [buttonCss, setButtonCss] = useState([]);
-  console.log(buttonCss);
+
   console.log(disabledBtn);
   console.log(dataList);
-  console.log(wordArr);
+  console.log(clickedData);
 
   const dataListHandler = useCallback((data) => {
     setDataList(data);
@@ -43,7 +42,7 @@ const Td = (props) => {
           }
         }
         dataArr.sort(() => Math.random() - 0.5);
-        setData(dataArr);
+        setChrList(dataArr);
       });
   }, [dataListHandler]);
 
@@ -77,21 +76,18 @@ const Td = (props) => {
   useEffect(() => {
     console.log("useEffect");
     let chr = "";
-    wordArr.map(({ word }) => (chr += word));
+    clickedData.map(({ word }) => (chr += word));
     onClick(chr);
-    console.log(wordArr);
-  }, [onClick, wordArr]);
+    console.log(clickedData);
+  }, [onClick, clickedData]);
 
   const clickHandler = (e) => {
     console.log("click");
 
-    if (wordArr.some((item) => item.id === e.target.name)) {
-      setButtonCss((prev) => prev.filter((a) => a !== e.target.name));
-      setWordArr((prev) => prev.filter((a) => a.id !== e.target.name));
+    if (clickedData.some((item) => item.id === e.target.name)) {
+      setClickedData((prev) => prev.filter((a) => a.id !== e.target.name));
     } else {
-      setButtonCss((prev) => [...prev, e.target.name]);
-
-      setWordArr((prev) => [
+      setClickedData((prev) => [
         ...prev,
         { id: e.target.name, word: e.target.value },
       ]);
@@ -101,13 +97,10 @@ const Td = (props) => {
   const submitHanlder = (e) => {
     e.preventDefault();
     if (dataList.some((item) => item.name === props.word)) {
-      buttonCss.map((id) => {
-        return (
-          setWordArr((prev) => prev.filter((a) => a.id !== id)),
-          setDisabledBtn((prev) => [...prev, id])
-        );
+      clickedData.map(({ id }) => {
+        return setDisabledBtn((prev) => [...prev, id]);
       });
-
+      setClickedData([]);
       props.onReset();
     } else {
       alert("땡");
@@ -117,7 +110,7 @@ const Td = (props) => {
   return (
     <>
       <div className={classes.dataTable}>
-        {data.map((item) => (
+        {chrList.map((item) => (
           <button
             disabled={disabledBtn.includes(item.id)}
             type="button"
@@ -125,7 +118,7 @@ const Td = (props) => {
             key={item.id}
             value={item.word}
             className={`${
-              wordArr.some((a) => a.id === item.id)
+              clickedData.some((a) => a.id === item.id)
                 ? classes.datas
                 : classes.data
             }`}
