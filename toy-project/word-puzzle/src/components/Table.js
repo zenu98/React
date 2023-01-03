@@ -1,25 +1,36 @@
 import React, { useState, useCallback } from "react";
 import Td from "./Td";
+import Modal from "./UI/Modal";
 
 import classes from "./Table.module.css";
 
 const Table = () => {
-  const [word, setWord] = useState([]);
+  const [word, setWord] = useState("");
+  const [count, setCount] = useState(0);
+
   console.log(word);
+  console.log(count);
 
   const clickHandler = useCallback((word) => {
     console.log("useCallback");
     setWord(word);
   }, []);
 
-  const resetHandler = () => {
+  const submitHandler = () => {
     setWord("");
+    setCount((prev) => prev + 1);
+  };
+
+  const confirmHandler = () => {
+    setCount(0);
   };
 
   return (
-    <div className={classes.center}>
-      <Td onClick={clickHandler} word={word} onReset={resetHandler} />
-    </div>
+    <React.Fragment>
+      {count === 8 && <Modal onConfirm={confirmHandler} />}
+
+      <Td onClick={clickHandler} word={word} onSubmit={submitHandler} />
+    </React.Fragment>
   );
 };
 

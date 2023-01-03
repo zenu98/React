@@ -1,5 +1,6 @@
 import React, { useState, useEffect, useCallback } from "react";
 import classes from "./Td.module.css";
+import Card from "./UI/Card";
 
 const Td = (props) => {
   const { onClick } = props;
@@ -46,33 +47,6 @@ const Td = (props) => {
       });
   }, [dataListHandler]);
 
-  // useEffect(() => {
-  //   console.log("useeffect");
-
-  //   const DUMMY = [
-  //     { id: 1, word: "바나나" },
-  //     { id: 2, word: "사과" },
-  //     { id: 3, word: "전화번호" },
-  //     { id: 4, word: "모자" },
-  //     { id: 5, word: "마우스" },
-  //     { id: 6, word: "휴지" },
-  //     { id: 7, word: "감자" },
-  //   ];
-  //   for (let k = 0; k < DUMMY.length; k++) {
-  //     for (let i = 0; i <= DUMMY[k].word.length - 1; i++) {
-  //       const chr = DUMMY[k].word.substring(i, i + 1);
-  //       if (dataArr.length < 16) {
-  //         dataArr.push({
-  //           id: Math.random().toString(),
-  //           word: chr,
-  //         });
-  //       }
-  //     }
-  //   }
-  //   dataArr.sort(() => Math.random() - 0.5);
-  //   setData(dataArr);
-  // }, []);
-
   useEffect(() => {
     console.log("useEffect");
     let chr = "";
@@ -87,10 +61,11 @@ const Td = (props) => {
     if (clickedData.some((item) => item.id === e.target.name)) {
       setClickedData((prev) => prev.filter((a) => a.id !== e.target.name));
     } else {
-      setClickedData((prev) => [
-        ...prev,
-        { id: e.target.name, word: e.target.value },
-      ]);
+      clickedData.length < 2 &&
+        setClickedData((prev) => [
+          ...prev,
+          { id: e.target.name, word: e.target.value },
+        ]);
     }
   };
 
@@ -101,7 +76,7 @@ const Td = (props) => {
         return setDisabledBtn((prev) => [...prev, id]);
       });
       setClickedData([]);
-      props.onReset();
+      props.onSubmit();
     } else {
       alert("땡");
     }
@@ -124,16 +99,18 @@ const Td = (props) => {
             }`}
             onClick={clickHandler}
           >
-            {item.word}
+            <p className={classes.font}>{item.word}</p>
           </button>
         ))}
       </div>
-      <form onSubmit={submitHanlder} className={classes.input}>
-        <div>
-          <input type="text" id="word" value={props.word} readOnly />
-          <button>확인</button>
-        </div>
-      </form>
+
+      <div className={classes.box}>
+        <h1>{props.word[0]}</h1>
+        <h1>{props.word[1]}</h1>
+      </div>
+      <div>
+        <button onClick={submitHanlder}>확인</button>
+      </div>
     </>
   );
 };
