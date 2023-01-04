@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useCallback } from "react";
 import classes from "./Td.module.css";
-import Card from "./UI/Card";
+import { CgCheckR } from "react-icons/cg";
 
 const Td = (props) => {
   const { onClick } = props;
@@ -22,13 +22,22 @@ const Td = (props) => {
     fetch("https://word-puzzle-efb93-default-rtdb.firebaseio.com/animals.json")
       .then((response) => response.json())
       .then((responseData) => {
+        for (let i = responseData.length - 1; i > 0; i--) {
+          let j = Math.floor(Math.random() * (i + 1));
+          [responseData[i], responseData[j]] = [
+            responseData[j],
+            responseData[i],
+          ];
+        }
         const loadedAnimals = [];
         for (const key in responseData) {
-          loadedAnimals.push({
-            id: key,
-            name: responseData[key].name,
-            description: responseData[key].description,
-          });
+          if (loadedAnimals.length < 8) {
+            loadedAnimals.push({
+              id: key,
+              name: responseData[key].name,
+              description: responseData[key].description,
+            });
+          } else break;
         }
         dataListHandler(loadedAnimals);
 
@@ -57,6 +66,7 @@ const Td = (props) => {
 
   const clickHandler = (e) => {
     console.log("click");
+    console.log(e.target.name);
 
     if (clickedData.some((item) => item.id === e.target.name)) {
       setClickedData((prev) => prev.filter((a) => a.id !== e.target.name));
@@ -84,7 +94,7 @@ const Td = (props) => {
 
   return (
     <>
-      <div className={classes.dataTable}>
+      <div className={classes["data-table"]}>
         {chrList.map((item) => (
           <button
             disabled={disabledBtn.includes(item.id)}
@@ -94,23 +104,26 @@ const Td = (props) => {
             value={item.word}
             className={`${
               clickedData.some((a) => a.id === item.id)
-                ? classes.datas
-                : classes.data
+                ? classes["clicked-btn"]
+                : classes.btn
             }`}
             onClick={clickHandler}
           >
-            <p className={classes.font}>{item.word}</p>
+            <span>{item.word}</span>
           </button>
         ))}
       </div>
 
-      <div className={classes.box}>
-        <h1>{props.word[0]}</h1>
-        <h1>{props.word[1]}</h1>
+      <div className={classes["result-box"]}>
+        <div>
+          <span>{props.word[0]}</span>
+        </div>
+        <div>
+          <span>{props.word[1]}</span>
+        </div>
       </div>
-      <div>
-        <button onClick={submitHanlder}>확인</button>
-      </div>
+
+      <CgCheckR onClick={submitHanlder} className={classes["check-btn"]} />
     </>
   );
 };
