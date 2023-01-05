@@ -1,13 +1,43 @@
-import React, { useState, useEffect, useCallback } from "react";
+import React, { useState, useEffect, useCallback, useReducer } from "react";
 import classes from "./Td.module.css";
 import { CgCheckR } from "react-icons/cg";
+import LoadingIndicator from "./UI/LoadingIndicator";
+
+const clickedDataReducer = (state, action) => {
+  switch (action.type) {
+    case "ON":
+      return [...state, action.data];
+    case "OFF":
+      return state.filter((item) => item.id !== action.id);
+    case "CLEAR":
+      return [];
+    default:
+      throw new Error("error");
+  }
+};
+
+const disabledButtonReducer = (state, action) => {
+  switch (action.type) {
+    case "ADD":
+      return [...state, action.id];
+    default:
+      throw new Error("error");
+  }
+};
+
+// const httpReducer = (state, action) => {
+//   switch(action.type){
+//     case ""
+//   }
+// }
 
 const Td = (props) => {
   const { onClick } = props;
+  const [clickedData, dispatch] = useReducer(clickedDataReducer, []);
+  const [disabledBtn, dispatchDisabled] = useReducer(disabledButtonReducer, []);
   const [dataList, setDataList] = useState([]);
   const [chrList, setChrList] = useState([]);
-  const [clickedData, setClickedData] = useState([]);
-  const [disabledBtn, setDisabledBtn] = useState([]);
+  const [isLoading, setIsLoading] = useState(false);
 
   console.log(disabledBtn);
   console.log(dataList);
@@ -18,6 +48,7 @@ const Td = (props) => {
   }, []);
 
   useEffect(() => {
+    setIsLoading(true);
     const dataArr = [];
     fetch("https://word-puzzle-efb93-default-rtdb.firebaseio.com/animals.json")
       .then((response) => response.json())
@@ -53,6 +84,7 @@ const Td = (props) => {
         }
         dataArr.sort(() => Math.random() - 0.5);
         setChrList(dataArr);
+        setIsLoading(false);
       });
   }, [dataListHandler]);
 
@@ -69,61 +101,77 @@ const Td = (props) => {
     console.log(e.target.name);
 
     if (clickedData.some((item) => item.id === e.target.name)) {
-      setClickedData((prev) => prev.filter((a) => a.id !== e.target.name));
+      dispatch({
+        type: "OFF",
+        id: e.target.name,
+      });
     } else {
       clickedData.length < 2 &&
-        setClickedData((prev) => [
-          ...prev,
-          { id: e.target.name, word: e.target.value },
-        ]);
+        dispatch({
+          type: "ON",
+          data: { id: e.target.name, word: e.target.value },
+        });
     }
   };
 
   const submitHanlder = (e) => {
     e.preventDefault();
     if (dataList.some((item) => item.name === props.word)) {
+      setDataList((prev) => prev.filter((item) => item.name !== props.word));
       clickedData.map(({ id }) => {
-        return setDisabledBtn((prev) => [...prev, id]);
+        return dispatchDisabled({
+          type: "ADD",
+          id: id,
+        });
       });
-      setClickedData([]);
+      dispatch({ type: "CLEAR" });
+
       props.onSubmit();
     } else {
-      alert("땡");
+      alert(`${props.word}...?`);
     }
   };
 
   return (
     <>
-      <div className={classes["data-table"]}>
-        {chrList.map((item) => (
-          <button
-            disabled={disabledBtn.includes(item.id)}
-            type="button"
-            name={item.id}
-            key={item.id}
-            value={item.word}
-            className={`${
-              clickedData.some((a) => a.id === item.id)
-                ? classes["clicked-btn"]
-                : classes.btn
-            }`}
-            onClick={clickHandler}
-          >
-            <span>{item.word}</span>
-          </button>
-        ))}
-      </div>
-
-      <div className={classes["result-box"]}>
-        <div>
-          <span>{props.word[0]}</span>
+      {isLoading ? (
+        <div className={classes.loading}>
+          <LoadingIndicator />
         </div>
+      ) : (
         <div>
-          <span>{props.word[1]}</span>
-        </div>
-      </div>
+          <div className={classes["data-table"]}>
+            {chrList.map((item) => (
+              <button
+                disabled={disabledBtn.includes(item.id)}
+                type="button"
+                name={item.id}
+                key={item.id}
+                value={item.word}
+                className={`${
+                  clickedData.some((a) => a.id === item.id)
+                    ? classes["clicked-btn"]
+                    : classes.btn
+                }`}
+                onClick={clickHandler}
+              >
+                <span>{item.word}</span>
+              </button>
+            ))}
+          </div>
 
-      <CgCheckR onClick={submitHanlder} className={classes["check-btn"]} />
+          <div className={classes["result-box"]}>
+            <div>
+              <span>{props.word[0]}</span>
+            </div>
+            <div>
+              <span>{props.word[1]}</span>
+            </div>
+          </div>
+
+          <CgCheckR onClick={submitHanlder} className={classes["check-btn"]} />
+        </div>
+      )}
     </>
   );
 };

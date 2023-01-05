@@ -12,13 +12,13 @@
   position: fixed;
   top: 30vh;
   left: 10%;
-  width: 80%;
+  width: 100%;
   z-index: 100;
   overflow: hidden;
 }
 
 .header {
-  background: #4f005f;
+  background: #00a191;
   padding: 1rem;
 }
 
@@ -29,6 +29,9 @@
 
 .content {
   padding: 1rem;
+  font-family: "Funflow";
+  font-size: 1.3rem;
+  color: rgb(71, 71, 71);
 }
 
 .actions {
@@ -36,10 +39,27 @@
   display: flex;
   justify-content: flex-end;
 }
+.actions button {
+  width: 5rem;
+  height: 2rem;
+  background-color: #00a191;
+  color: white;
+  border-radius: 5px;
+  border: none;
+}
+
+.actions button:hover {
+  cursor: pointer;
+  background-color: #6caea7;
+}
 
 @media (min-width: 768px) {
   .modal {
     left: calc(50% - 20rem);
     width: 40rem;
   }
+}
+@font-face {
+  font-family: "Funflow";
+  src: url("../../fonts/펀플로\ 생존자.ttf");
 }

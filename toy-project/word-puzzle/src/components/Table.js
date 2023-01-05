@@ -2,8 +2,6 @@ import React, { useState, useCallback } from "react";
 import Td from "./Td";
 import Modal from "./UI/Modal";
 
-import classes from "./Table.module.css";
-
 const Table = () => {
   const [word, setWord] = useState("");
   const [count, setCount] = useState(0);
