@@ -1,6 +1,6 @@
 import React, { useState, useCallback } from "react";
 import Td from "./Td";
-import Modal from "./UI/Modal";
+import Modal from "../UI/Modal";
 
 const Table = () => {
   const [word, setWord] = useState("");
@@ -20,6 +20,7 @@ const Table = () => {
   };
 
   const confirmHandler = () => {
+    console.log("modal");
     setCount(0);
   };
 

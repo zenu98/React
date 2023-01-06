@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useCallback, useReducer } from "react";
 import classes from "./Td.module.css";
 import { CgCheckR } from "react-icons/cg";
-import LoadingIndicator from "./UI/LoadingIndicator";
+import LoadingIndicator from "../UI/LoadingIndicator";
 
 const clickedDataReducer = (state, action) => {
   switch (action.type) {
@@ -27,7 +27,16 @@ const disabledButtonReducer = (state, action) => {
 
 // const httpReducer = (state, action) => {
 //   switch(action.type){
-//     case ""
+//     case "SEND":
+//       return {loading:true,error:null};
+//     case "RESOPNSE":
+//       return {...state, loading:false};
+//     case "ERROR":
+//       return {loading:false, error:action.errorMsg};
+//     case "CLEAR":
+//       return {...state, error:null};
+//     default:
+//       throw new Error("error");
 //   }
 // }
 
@@ -35,6 +44,10 @@ const Td = (props) => {
   const { onClick } = props;
   const [clickedData, dispatch] = useReducer(clickedDataReducer, []);
   const [disabledBtn, dispatchDisabled] = useReducer(disabledButtonReducer, []);
+  // const [httpState, dispatchHttp] = useReducer(httpReducer, {
+  //   loading: false,
+  //   error: null,
+  // });
   const [dataList, setDataList] = useState([]);
   const [chrList, setChrList] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
@@ -44,12 +57,16 @@ const Td = (props) => {
   console.log(clickedData);
 
   const dataListHandler = useCallback((data) => {
+    console.log("datalist");
     setDataList(data);
   }, []);
 
   useEffect(() => {
+    console.log("dataload");
+
     setIsLoading(true);
     const dataArr = [];
+
     fetch("https://word-puzzle-efb93-default-rtdb.firebaseio.com/animals.json")
       .then((response) => response.json())
       .then((responseData) => {
@@ -166,6 +183,9 @@ const Td = (props) => {
             </div>
             <div>
               <span>{props.word[1]}</span>
+            </div>
+            <div>
+              <span>{props.word[2]}</span>
             </div>
           </div>
 

@@ -1,8 +1,15 @@
-import Table from "./components/Table";
+import Table from "./components/puzzle/Table";
+import React, { useContext } from "react";
+import Start from "./components/Start";
+import { StartContext } from "./components/context/start-context";
 
-import React from "react";
 function App() {
-  return <Table />;
+  const startContext = useContext(StartContext);
+  let content = <Start />;
+  if (startContext.isAuth) {
+    content = <Table />;
+  }
+  return content;
 }
 
 export default App;
