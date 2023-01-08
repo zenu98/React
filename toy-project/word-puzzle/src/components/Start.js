@@ -9,14 +9,34 @@ const Auth = () => {
     console.log("click");
     startContext.login();
   };
+  const twoWordHandler = () => {
+    startContext.twoWord();
+  };
+  const threeWordHandler = () => {
+    startContext.threeWord();
+  };
 
   return (
     <div className={classes.auth}>
       <Card>
-        <h2>로그인 해주세요!</h2>
-        <p>로그인을 하면 내용이 보입니다.</p>
-        <button onClick={loginHandler}>로그인</button>
-        <button onClick={loginHandler}>로그인</button>
+        <h2>동물 이름 퍼즐!</h2>
+        <p>동물 글자 수를 골라주세요.</p>
+        <button
+          onClick={() => {
+            loginHandler();
+            twoWordHandler();
+          }}
+        >
+          2
+        </button>
+        <button
+          onClick={() => {
+            loginHandler();
+            threeWordHandler();
+          }}
+        >
+          3
+        </button>
       </Card>
     </div>
   );

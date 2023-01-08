@@ -2,6 +2,7 @@ import React, { useState, useEffect, useCallback, useReducer } from "react";
 import classes from "./Td.module.css";
 import { CgCheckR } from "react-icons/cg";
 import LoadingIndicator from "../UI/LoadingIndicator";
+import AnimalModal from "../UI/AnimalModal";
 
 const clickedDataReducer = (state, action) => {
   switch (action.type) {
@@ -48,6 +49,8 @@ const Td = (props) => {
   //   loading: false,
   //   error: null,
   // });
+  const [isAnswer, setIsAnswer] = useState(false);
+  const [answerWord, setAnswerWord] = useState();
   const [dataList, setDataList] = useState([]);
   const [chrList, setChrList] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
@@ -55,6 +58,7 @@ const Td = (props) => {
   console.log(disabledBtn);
   console.log(dataList);
   console.log(clickedData);
+  console.log(answerWord);
 
   const dataListHandler = useCallback((data) => {
     console.log("datalist");
@@ -67,7 +71,12 @@ const Td = (props) => {
     setIsLoading(true);
     const dataArr = [];
 
-    fetch("https://word-puzzle-efb93-default-rtdb.firebaseio.com/animals.json")
+    const query = `?orderBy="length"&equalTo=${props.wordLength}`;
+
+    fetch(
+      "https://word-puzzle-efb93-default-rtdb.firebaseio.com/animals.json" +
+        query
+    )
       .then((response) => response.json())
       .then((responseData) => {
         for (let i = responseData.length - 1; i > 0; i--) {
@@ -84,6 +93,7 @@ const Td = (props) => {
               id: key,
               name: responseData[key].name,
               description: responseData[key].description,
+              length: responseData[key].length,
             });
           } else break;
         }
@@ -103,7 +113,7 @@ const Td = (props) => {
         setChrList(dataArr);
         setIsLoading(false);
       });
-  }, [dataListHandler]);
+  }, [dataListHandler, props.wordLength]);
 
   useEffect(() => {
     console.log("useEffect");
@@ -123,7 +133,7 @@ const Td = (props) => {
         id: e.target.name,
       });
     } else {
-      clickedData.length < 2 &&
+      clickedData.length < props.wordLength &&
         dispatch({
           type: "ON",
           data: { id: e.target.name, word: e.target.value },
@@ -134,7 +144,9 @@ const Td = (props) => {
   const submitHanlder = (e) => {
     e.preventDefault();
     if (dataList.some((item) => item.name === props.word)) {
+      setAnswerWord(dataList.filter((item) => item.name === props.word));
       setDataList((prev) => prev.filter((item) => item.name !== props.word));
+      setIsAnswer(true);
       clickedData.map(({ id }) => {
         return dispatchDisabled({
           type: "ADD",
@@ -149,15 +161,26 @@ const Td = (props) => {
     }
   };
 
+  const confirmHandler = () => {
+    setIsAnswer(false);
+  };
+
   return (
     <>
+      {isAnswer && (
+        <AnimalModal
+          word={answerWord[0].name}
+          description={answerWord[0].description}
+          onConfirm={confirmHandler}
+        />
+      )}
       {isLoading ? (
         <div className={classes.loading}>
           <LoadingIndicator />
         </div>
       ) : (
         <div>
-          <div className={classes["data-table"]}>
+          <div className={classes[`data-table-${props.wordLength}`]}>
             {chrList.map((item) => (
               <button
                 disabled={disabledBtn.includes(item.id)}
@@ -184,6 +207,11 @@ const Td = (props) => {
             <div>
               <span>{props.word[1]}</span>
             </div>
+            {props.wordLength === 3 && (
+              <div>
+                <span>{props.word[2]}</span>
+              </div>
+            )}
           </div>
 
           <CgCheckR onClick={submitHanlder} className={classes["check-btn"]} />

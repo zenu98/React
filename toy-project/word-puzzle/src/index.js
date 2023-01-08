@@ -3,12 +3,15 @@ import ReactDOM from "react-dom/client";
 import App from "./App";
 import reportWebVitals from "./reportWebVitals";
 import StartContextProvier from "./components/context/start-context";
+import { BrowserRouter } from "react-router-dom";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
-  <StartContextProvier>
-    <App />
-  </StartContextProvier>
+  <BrowserRouter>
+    <StartContextProvier>
+      <App />
+    </StartContextProvier>
+  </BrowserRouter>
 );
 
 // If you want to start measuring performance in your app, pass a function
