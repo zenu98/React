@@ -37,15 +37,22 @@
 .actions {
   padding: 1rem;
   display: flex;
-  justify-content: flex-end;
+  justify-content: center;
 }
 .actions button {
+  margin: 0 3rem 0 3rem;
   width: 5rem;
-  height: 2rem;
+  height: 3rem;
   background-color: #00a191;
   color: white;
   border-radius: 5px;
   border: none;
+}
+
+.actions button span {
+  font-family: "Funflow";
+  font-size: 25px;
+  pointer-events: none;
 }
 
 .actions button:hover {

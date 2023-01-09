@@ -1,15 +1,15 @@
 import React, { useState } from "react";
 
 export const StartContext = React.createContext({
-  isAuth: false,
+  isSelected: false,
   puzzleWord: 0,
-  login: () => {},
+  select: () => {},
   twoWord: () => {},
   threeWord: () => {},
 });
 
 const StartContextProvier = (props) => {
-  const [isLogin, setIsLogin] = useState(false);
+  const [isSelected, setIsSelected] = useState(false);
   const [puzzleWord, setPuzzleWord] = useState(0);
 
   const twoWordHandler = () => {
@@ -20,15 +20,15 @@ const StartContextProvier = (props) => {
     setPuzzleWord(3);
   };
 
-  const loginHandler = () => {
-    setIsLogin(true);
+  const selectHandler = () => {
+    setIsSelected(true);
   };
 
   return (
     <StartContext.Provider
       value={{
-        login: loginHandler,
-        isAuth: isLogin,
+        select: selectHandler,
+        isSelected: isSelected,
         twoWord: twoWordHandler,
         threeWord: threeWordHandler,
         puzzleWord: puzzleWord,

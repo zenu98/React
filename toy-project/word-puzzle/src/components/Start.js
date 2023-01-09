@@ -1,13 +1,39 @@
 import React, { useContext } from "react";
 import { StartContext } from "./context/start-context";
+import ReactDOM from "react-dom";
 import Card from "./UI/Card";
 import classes from "./Start.module.css";
 
-const Auth = () => {
+const Backdrop = () => {
+  return <div className={classes.backdrop} />;
+};
+
+const ModalOverlay = (props) => {
+  return (
+    <Card className={classes.modal}>
+      <header className={classes.header}>
+        <h2>동물 이름 퍼즐</h2>
+      </header>
+      <div className={classes.content}>
+        <p>동물 글자 수를 골라주세요.</p>
+      </div>
+      <footer className={classes.actions}>
+        <button onClick={props.onClickTwo}>
+          <span>2</span>
+        </button>
+        <button onClick={props.onClickThree}>
+          <span>3</span>
+        </button>
+      </footer>
+    </Card>
+  );
+};
+
+const Start = () => {
   const startContext = useContext(StartContext);
   const loginHandler = () => {
     console.log("click");
-    startContext.login();
+    startContext.select();
   };
   const twoWordHandler = () => {
     startContext.twoWord();
@@ -17,29 +43,26 @@ const Auth = () => {
   };
 
   return (
-    <div className={classes.auth}>
-      <Card>
-        <h2>동물 이름 퍼즐!</h2>
-        <p>동물 글자 수를 골라주세요.</p>
-        <button
-          onClick={() => {
+    <React.Fragment>
+      {ReactDOM.createPortal(
+        <Backdrop />,
+        document.getElementById("backdrop-root")
+      )}
+      {ReactDOM.createPortal(
+        <ModalOverlay
+          onClickTwo={() => {
             loginHandler();
             twoWordHandler();
           }}
-        >
-          2
-        </button>
-        <button
-          onClick={() => {
+          onClickThree={() => {
             loginHandler();
             threeWordHandler();
           }}
-        >
-          3
-        </button>
-      </Card>
-    </div>
+        />,
+        document.getElementById("overlay-root")
+      )}
+    </React.Fragment>
   );
 };
 
-export default Auth;
+export default Start;

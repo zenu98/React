@@ -1,6 +1,77 @@
-.auth {
-  width: 30rem;
-  margin: 2rem auto;
-  max-width: 80%;
-  text-align: center;
+.backdrop {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  z-index: 10;
+  background: rgba(0, 0, 0, 0.75);
+}
+
+.modal {
+  position: fixed;
+  top: 30vh;
+  left: 10%;
+  width: 80%;
+
+  z-index: 100;
+  overflow: hidden;
+}
+
+.header {
+  background: #00a191;
+  padding: 1rem;
+  display: flex;
+  justify-content: center;
+}
+
+.header h2 {
+  margin: 0;
+  color: white;
+}
+
+.content {
+  padding: 1rem;
+  font-family: "Funflow";
+  font-size: 1.3rem;
+  color: rgb(71, 71, 71);
+  display: flex;
+  justify-content: center;
+}
+
+.actions {
+  padding: 1rem;
+  display: flex;
+  justify-content: center;
+}
+.actions button {
+  margin: 0 3rem 0 3rem;
+  width: 5rem;
+  height: 3rem;
+  background-color: #00a191;
+  color: white;
+  border-radius: 5px;
+  border: none;
+}
+
+.actions button span {
+  font-family: "Funflow";
+  font-size: 25px;
+  pointer-events: none;
+}
+
+.actions button:hover {
+  cursor: pointer;
+  background-color: #6caea7;
+}
+
+@media (min-width: 768px) {
+  .modal {
+    left: calc(50% - 20rem);
+    width: 40rem;
+  }
+}
+@font-face {
+  font-family: "Funflow";
+  src: url("../fonts/펀플로\ 생존자.ttf");
 }
