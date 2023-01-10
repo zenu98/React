@@ -13,9 +13,9 @@
   top: 30vh;
   left: 10%;
   width: 80%;
-
   z-index: 100;
   overflow: hidden;
+  animation: openModal 1s ease-out forwards;
 }
 
 .header {
@@ -74,4 +74,16 @@
 @font-face {
   font-family: "Funflow";
   src: url("../fonts/펀플로\ 생존자.ttf");
+}
+
+@keyframes openModal {
+  0% {
+    opacity: 0;
+    transform: translateY(-100%);
+  }
+
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }

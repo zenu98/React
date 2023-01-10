@@ -54,7 +54,7 @@ const Td = (props) => {
   const [dataList, setDataList] = useState([]);
   const [chrList, setChrList] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
-
+  const a = localStorage.getItem("word");
   console.log(disabledBtn);
   console.log(dataList);
   console.log(clickedData);
@@ -71,7 +71,7 @@ const Td = (props) => {
     setIsLoading(true);
     const dataArr = [];
 
-    const query = `?orderBy="length"&equalTo=${props.wordLength}`;
+    const query = `?orderBy="length"&equalTo=${a}`;
 
     fetch(
       "https://word-puzzle-efb93-default-rtdb.firebaseio.com/animals.json" +
@@ -113,7 +113,7 @@ const Td = (props) => {
         setChrList(dataArr);
         setIsLoading(false);
       });
-  }, [dataListHandler, props.wordLength]);
+  }, [dataListHandler, a]);
 
   useEffect(() => {
     console.log("useEffect");
@@ -133,7 +133,7 @@ const Td = (props) => {
         id: e.target.name,
       });
     } else {
-      clickedData.length < props.wordLength &&
+      clickedData.length < a &&
         dispatch({
           type: "ON",
           data: { id: e.target.name, word: e.target.value },
@@ -180,7 +180,7 @@ const Td = (props) => {
         </div>
       ) : (
         <div>
-          <div className={classes[`data-table-${props.wordLength}`]}>
+          <div className={classes[`data-table-${a}`]}>
             {chrList.map((item) => (
               <button
                 disabled={disabledBtn.includes(item.id)}

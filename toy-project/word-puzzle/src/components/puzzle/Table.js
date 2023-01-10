@@ -29,8 +29,6 @@ const Table = () => {
 
   return (
     <React.Fragment>
-      {count === 8 && <Modal onConfirm={confirmHandler} />}
-
       <Td
         onClick={clickHandler}
         word={word}
