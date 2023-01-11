@@ -1,0 +1,23 @@
+.result-box {
+  display: flex;
+  margin-left: 6rem;
+  margin-top: 1rem;
+  justify-content: space-around;
+  align-items: center;
+  width: 250px;
+  height: 6rem;
+  background-color: #e8f3f1;
+  padding: 1rem;
+  border-radius: 10px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.25);
+}
+
+.result-box div {
+  text-align: center;
+}
+.result-box span {
+  font-family: "Funflow";
+  font-size: 3.5rem;
+  color: #374940;
+  pointer-events: none;
+}

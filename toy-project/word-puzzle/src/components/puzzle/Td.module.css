@@ -40,6 +40,19 @@
   pointer-events: none;
 }
 
+.container-result {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.container {
+  display: flex;
+
+  justify-content: center;
+  align-items: center;
+}
+
 .btn {
   cursor: pointer;
   background-color: #ecfdfa;
@@ -51,6 +64,7 @@
 .btn:enabled:hover {
   background-color: #d9eddf;
   transform: scale(1.03);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
 }
 .btn:disabled {
   cursor: default;
@@ -69,33 +83,11 @@
   user-select: none;
 }
 
-.result-box {
-  margin: 15px auto 8px auto;
-  display: flex;
-  justify-content: space-around;
-  align-items: center;
-  width: 15rem;
-  height: 6rem;
-  background-color: #e8f3f1;
-  padding: 1rem;
-  border-radius: 10px;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.25);
-}
-
-.result-box div {
-  text-align: center;
-}
-.result-box span {
-  font-family: "Funflow";
-  font-size: 3.5rem;
-  color: #374940;
-  pointer-events: none;
-}
 .check-btn {
+  margin-top: 1.5rem;
   cursor: pointer;
+  margin-left: 1.5rem;
   transition: all 600ms ease;
-  display: block;
-  margin: auto;
   font-size: 4rem;
   color: #d4e5d9;
 }
@@ -103,6 +95,27 @@
   transform: scale(1.1);
   color: #85eca7;
 }
+.home-btn {
+  cursor: pointer;
+  transition: all 600ms ease;
+  font-size: 4rem;
+  color: #d4e5d9;
+  margin-right: 2rem;
+}
+.home-btn:hover {
+  color: #85eca7;
+}
+.refresh-btn {
+  cursor: pointer;
+  transition: all 600ms ease;
+  font-size: 4rem;
+  color: #d4e5d9;
+  margin-left: 2rem;
+}
+.refresh-btn:hover {
+  color: #85eca7;
+}
+
 .loading {
   display: flex;
   justify-content: center;

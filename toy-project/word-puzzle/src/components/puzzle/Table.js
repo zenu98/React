@@ -1,13 +1,10 @@
-import React, { useState, useCallback, useContext } from "react";
+import React, { useState, useCallback } from "react";
 import Td from "./Td";
-import Modal from "../UI/Modal";
-import { StartContext } from "../context/start-context";
 
 const Table = () => {
-  const startContext = useContext(StartContext);
-  const wordLength = startContext.puzzleWord;
   const [word, setWord] = useState("");
   const [count, setCount] = useState(0);
+  const wordLength = localStorage.getItem("word");
 
   console.log(word);
   console.log(count);

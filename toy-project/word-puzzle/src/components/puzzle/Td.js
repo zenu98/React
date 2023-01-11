@@ -1,8 +1,12 @@
 import React, { useState, useEffect, useCallback, useReducer } from "react";
 import classes from "./Td.module.css";
 import { CgCheckR } from "react-icons/cg";
+import { FaHome } from "react-icons/fa";
+import { MdRefresh } from "react-icons/md";
 import LoadingIndicator from "../UI/LoadingIndicator";
 import AnimalModal from "../UI/AnimalModal";
+import Result from "./Result";
+import { Link } from "react-router-dom";
 
 const clickedDataReducer = (state, action) => {
   switch (action.type) {
@@ -54,11 +58,6 @@ const Td = (props) => {
   const [dataList, setDataList] = useState([]);
   const [chrList, setChrList] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
-  const a = localStorage.getItem("word");
-  console.log(disabledBtn);
-  console.log(dataList);
-  console.log(clickedData);
-  console.log(answerWord);
 
   const dataListHandler = useCallback((data) => {
     console.log("datalist");
@@ -71,7 +70,7 @@ const Td = (props) => {
     setIsLoading(true);
     const dataArr = [];
 
-    const query = `?orderBy="length"&equalTo=${a}`;
+    const query = `?orderBy="length"&equalTo=${props.wordLength}`;
 
     fetch(
       "https://word-puzzle-efb93-default-rtdb.firebaseio.com/animals.json" +
@@ -113,7 +112,7 @@ const Td = (props) => {
         setChrList(dataArr);
         setIsLoading(false);
       });
-  }, [dataListHandler, a]);
+  }, [dataListHandler, props.wordLength]);
 
   useEffect(() => {
     console.log("useEffect");
@@ -133,7 +132,7 @@ const Td = (props) => {
         id: e.target.name,
       });
     } else {
-      clickedData.length < a &&
+      clickedData.length < props.wordLength &&
         dispatch({
           type: "ON",
           data: { id: e.target.name, word: e.target.value },
@@ -166,7 +165,7 @@ const Td = (props) => {
   };
 
   return (
-    <>
+    <div>
       {isAnswer && (
         <AnimalModal
           word={answerWord[0].name}
@@ -180,7 +179,17 @@ const Td = (props) => {
         </div>
       ) : (
         <div>
-          <div className={classes[`data-table-${a}`]}>
+          <div className={classes.container}>
+            <Link to="/">
+              <FaHome className={classes["home-btn"]} />
+            </Link>
+
+            <MdRefresh
+              className={classes["refresh-btn"]}
+              onClick={() => window.location.replace("/puzzle")}
+            />
+          </div>
+          <div className={classes[`data-table-${props.wordLength}`]}>
             {chrList.map((item) => (
               <button
                 disabled={disabledBtn.includes(item.id)}
@@ -199,25 +208,16 @@ const Td = (props) => {
               </button>
             ))}
           </div>
-
-          <div className={classes["result-box"]}>
-            <div>
-              <span>{props.word[0]}</span>
-            </div>
-            <div>
-              <span>{props.word[1]}</span>
-            </div>
-            {props.wordLength === 3 && (
-              <div>
-                <span>{props.word[2]}</span>
-              </div>
-            )}
+          <div className={classes["container-result"]}>
+            <Result wordLength={props.wordLength} word={props.word} />
+            <CgCheckR
+              onClick={submitHanlder}
+              className={classes["check-btn"]}
+            />
           </div>
-
-          <CgCheckR onClick={submitHanlder} className={classes["check-btn"]} />
         </div>
       )}
-    </>
+    </div>
   );
 };
 

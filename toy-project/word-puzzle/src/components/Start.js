@@ -24,9 +24,11 @@ const ModalOverlay = (props) => {
             <span>2</span>
           </button>
         </Link>
-        <button onClick={props.onClickThree}>
-          <span>3</span>
-        </button>
+        <Link to="/puzzle">
+          <button onClick={props.onClickThree}>
+            <span>3</span>
+          </button>
+        </Link>
       </footer>
     </Card>
   );
