@@ -15,7 +15,14 @@
   width: 80%;
   z-index: 100;
   overflow: hidden;
+}
+
+.Modalopen {
   animation: openModal 1s ease-out forwards;
+}
+
+.Modalclose {
+  animation: closeModal 1s ease-out forwards;
 }
 
 .header {
@@ -85,5 +92,17 @@
   100% {
     opacity: 1;
     transform: translateY(0);
+  }
+}
+
+@keyframes closeModal {
+  0% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  100% {
+    opacity: 0;
+    transform: translateY(-100%);
   }
 }

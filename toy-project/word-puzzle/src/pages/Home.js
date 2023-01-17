@@ -1,7 +1,7 @@
-import Start from "../components/Start";
+import Main from "../Layout/Main";
 
 const Home = () => {
-  return <Start />;
+  return <Main />;
 };
 
 export default Home;

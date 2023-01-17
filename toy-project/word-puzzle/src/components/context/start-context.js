@@ -15,6 +15,7 @@ const StartContextProvier = (props) => {
   const twoWordHandler = () => {
     setPuzzleWord(2);
     localStorage.setItem("word", 2);
+    
   };
 
   const threeWordHandler = () => {
