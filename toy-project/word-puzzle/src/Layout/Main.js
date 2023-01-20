@@ -10,9 +10,9 @@ const Main = () => {
       <div className={classes.textcontainer}>
         <span>간단한</span>
         <span className={classes.text}>동물 단어 퍼즐</span>
-        <Link to="/select">
+        <Link to="/select" style={{ textDecoration: "none" }}>
           <button className={classes.btn}>
-            <span>시작</span>
+            <span>시작하기</span>
           </button>
         </Link>
       </div>

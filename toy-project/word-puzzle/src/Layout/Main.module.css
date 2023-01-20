@@ -6,40 +6,45 @@
   justify-content: center;
 }
 .textcontainer {
-  justify-content: center;
-  font-family: "Nanum";
+  margin-bottom: 5rem;
+  font-family: "Funflow";
   font-size: 5rem;
 }
-.textcontainer :nth-child(1) {
-  animation: textone 2s ease-out forwards;
+.textcontainer span:nth-child(1) {
+  animation: fade 2s ease-out forwards;
   text-align: center;
   display: block;
 }
 .btn {
-  margin: 0 auto;
-
+  display: block;
+  margin: 3rem auto 0 auto;
   cursor: pointer;
   background-color: #ecfdfa;
   border-color: #629c86;
-  border-radius: 10px;
+  border-radius: 30px;
+  width: 12rem;
+  height: 5rem;
+  animation: fade 6s ease-out forwards;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.25);
+  transition: all 600ms ease;
+}
+
+.btn span {
+  font-size: 2rem;
+  font-family: "Funflow";
+  pointer-events: none;
+}
+.btn:hover {
+  background-color: #d9eddf;
+
+  transform: scale(1.1);
 }
 
 .text {
-  animation: texttwo 4s ease-out forwards;
+  animation: fade 4s ease-out forwards;
 }
 
-@keyframes textone {
-  0% {
-    opacity: 0;
-  }
-  50% {
-    opacity: 0;
-  }
-  100% {
-    opacity: 1;
-  }
-}
-@keyframes texttwo {
+@keyframes fade {
   0% {
     opacity: 0;
   }
@@ -54,4 +59,6 @@
 @font-face {
   font-family: "Nanum";
   src: url("../fonts/NanumBarunGothicBold.ttf");
+  font-family: "Funflow";
+  src: url("../fonts/펀플로\ 생존자.ttf");
 }

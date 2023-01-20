@@ -15,7 +15,7 @@ const ModalOverlay = (props) => {
   const goPuzzle = () => {
     setTimeout(() => {
       navigate("/puzzle");
-    }, 1000);
+    }, 500);
   };
 
   return (

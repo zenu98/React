@@ -32,6 +32,7 @@
   column-gap: 5px;
   row-gap: 5px;
   background-color: #53d9c7;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.25);
 }
 .data-table-3 span {
   font-family: "Funflow";
@@ -99,7 +100,7 @@
   cursor: pointer;
   transition: all 600ms ease;
   font-size: 4rem;
-  color: #d4e5d9;
+  color: #f3f8f7;
   margin-right: 2rem;
 }
 .home-btn:hover {
@@ -109,7 +110,7 @@
   cursor: pointer;
   transition: all 600ms ease;
   font-size: 4rem;
-  color: #d4e5d9;
+  color: #f3f8f7;
   margin-left: 2rem;
 }
 .refresh-btn:hover {
