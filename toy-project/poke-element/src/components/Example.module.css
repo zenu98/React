@@ -1,0 +1,188 @@
+.wrapper {
+  width: 100%;
+  height: 100vh;
+  position: relative;
+}
+.menu-btn {
+  background: #da7071;
+  border-radius: 50%;
+  width: 100px;
+  height: 100px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  transition: background 0.3s;
+  z-index: 2;
+  box-shadow: 0px 1px 5px rgba(0, 0, 0, 0.3);
+}
+.menu-btn:hover,
+.active {
+  background: #d15052;
+}
+.menu-btn,
+.icons-wrapper {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  transition-delay: 0.1s;
+}
+.menu-btn span {
+  display: block;
+  width: 30px;
+  height: 3px;
+  background: #333;
+  margin-bottom: 5px;
+  transition: background 0.3s, transform 0.3s;
+}
+.menu-btn span:last-child {
+  margin-bottom: 0;
+}
+.active span:nth-child(1) {
+  transform: rotate(45deg) translate(5px, 5px);
+}
+.active span:nth-child(2) {
+  opacity: 0;
+}
+.active span:nth-child(3) {
+  transform: rotate(-45deg) translate(6px, -5px);
+}
+
+.icons {
+  position: relative;
+}
+.icon {
+  position: absolute;
+  top: calc(50% - 35px);
+  left: calc(50% - 35px);
+  background: whitesmoke;
+  width: 70px;
+  height: 70px;
+  border-radius: 50%;
+  display: flex;
+  cursor: pointer;
+  transform: translate(0px, 0px);
+  z-index: 1;
+}
+.icon:hover {
+  background: #da7071;
+}
+.icon:hover .fa {
+  color: #272c2c;
+}
+.fa {
+  margin: auto;
+  color: #da7071;
+  font-size: 30px;
+}
+.icon:nth-child(1) {
+  transition: background 0.3s, transform 0.3s 0.1s;
+}
+.icon:nth-child(2) {
+  transition: background 0.3s, transform 0.3s 0.15s;
+}
+.icon:nth-child(3) {
+  transition: background 0.3s, transform 0.3s 0.2s;
+}
+.icon:nth-child(4) {
+  transition: background 0.3s, transform 0.3s 0.25s;
+}
+.icon:nth-child(5) {
+  transition: background 0.3s, transform 0.3s 0.3s;
+}
+.icon:nth-child(6) {
+  transition: background 0.3s, transform 0.3s 0.35s;
+}
+.icon:nth-child(7) {
+  transition: background 0.3s, transform 0.3s 0.4s;
+}
+.icon:nth-child(8) {
+  transition: background 0.3s, transform 0.3s 0.45s;
+}
+.icon:nth-child(9) {
+  transition: background 0.3s, transform 0.3s 0.5s;
+}
+.icon:nth-child(10) {
+  transition: background 0.3s, transform 0.3s 0.55s;
+}
+.icon:nth-child(11) {
+  transition: background 0.3s, transform 0.3s 0.6s;
+}
+.icon:nth-child(12) {
+  transition: background 0.3s, transform 0.3s 0.65s;
+}
+.icon:nth-child(13) {
+  transition: background 0.3s, transform 0.3s 0.7s;
+}
+.icon:nth-child(14) {
+  transition: background 0.3s, transform 0.3s 0.75s;
+}
+.icon:nth-child(15) {
+  transition: background 0.3s, transform 0.3s 0.8s;
+}
+.icon:nth-child(16) {
+  transition: background 0.3s, transform 0.3s 0.85s;
+}
+.icon:nth-child(17) {
+  transition: background 0.3s, transform 0.3s 0.9s;
+}
+.icon:nth-child(18) {
+  transition: background 0.3s, transform 0.3s 0.95s;
+}
+
+.show:nth-child(1) {
+  transform: translate(50px, -300px);
+}
+.show:nth-child(2) {
+  transform: translate(150px, -270px);
+}
+.show:nth-child(3) {
+  transform: translate(230px, -200px);
+}
+.show:nth-child(4) {
+  transform: translate(280px, -100px);
+}
+.show:nth-child(5) {
+  transform: translate(300px, 0px);
+}
+.show:nth-child(6) {
+  transform: translate(280px, 100px);
+}
+.show:nth-child(7) {
+  transform: translate(230px, 200px);
+}
+.show:nth-child(8) {
+  transform: translate(150px, 270px);
+}
+.show:nth-child(9) {
+  transform: translate(50px, 300px);
+}
+.show:nth-child(10) {
+  transform: translate(-50px, 300px);
+}
+.show:nth-child(11) {
+  transform: translate(-150px, 270px);
+}
+.show:nth-child(12) {
+  transform: translate(-230px, 200px);
+}
+.show:nth-child(13) {
+  transform: translate(-280px, 100px);
+}
+.show:nth-child(14) {
+  transform: translate(-300px, 0px);
+}
+.show:nth-child(15) {
+  transform: translate(-280px, -100px);
+}
+.show:nth-child(16) {
+  transform: translate(-230px, -200px);
+}
+.show:nth-child(17) {
+  transform: translate(-150px, -270px);
+}
+.show:nth-child(18) {
+  transform: translate(-50px, -300px);
+}
