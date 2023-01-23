@@ -66,17 +66,116 @@
   transform: translate(0px, 0px);
   z-index: 1;
 }
+.icon-fire {
+  margin: auto;
+  font-size: 55px;
+  color: #ff4422;
+}
+.icon-water {
+  margin: auto;
+  font-size: 55px;
+  color: #3399ff;
+}
+.icon-electric {
+  margin: auto;
+  font-size: 55px;
+  color: #f8be32;
+}
+.icon-grass {
+  margin: auto;
+  font-size: 50px;
+  color: #77cc55;
+}
+.icon-ice {
+  margin: auto;
+  font-size: 55px;
+  color: #66ccff;
+}
+.icon-fighting {
+  margin: auto;
+  font-size: 55px;
+  color: #bb5544;
+}
+.icon-poison {
+  margin: auto;
+  font-size: 55px;
+  color: #aa5599;
+}
+.icon-ground {
+  margin-left: auto;
+  margin-right: auto;
+  font-size: 55px;
+  color: #ddbb55;
+}
+.icon-flying {
+  margin: auto;
+  font-size: 55px;
+  color: #8899ff;
+}
+.icon-psychic {
+  margin: auto;
+  font-size: 55px;
+  color: #ff5599;
+}
+.icon-bug {
+  margin: auto;
+  font-size: 55px;
+  color: #aabb22;
+}
+.icon-rock {
+  margin: auto;
+  font-size: 55px;
+  color: #bbaa66;
+}
+.icon-ghost {
+  margin: auto;
+  font-size: 55px;
+  color: #6666bb;
+}
+.icon-dragon {
+  margin: auto;
+  font-size: 55px;
+  color: #7766ee;
+}
+.icon-dark {
+  margin: auto;
+  font-size: 55px;
+  color: #3c2d23;
+}
+.icon-steel {
+  margin: auto;
+  font-size: 55px;
+  color: #8e8e9f;
+}
+.icon-fairy {
+  margin: auto;
+  font-size: 55px;
+  color: #ee99ee;
+}
+.icon-normal {
+  margin: auto;
+  font-size: 55px;
+  color: #aaaa99;
+}
+
 .icon:hover {
   background: #da7071;
 }
-.icon:hover .fa {
+.icon:hover .element {
   color: #272c2c;
 }
-.fa {
+.element {
   margin: auto;
-  color: #da7071;
-  font-size: 30px;
+  color: whitesmoke;
+  font-size: 50px;
 }
+
+.fire {
+  margin: auto;
+  color: #ff4422;
+  font-size: 50px;
+}
+
 .icon:nth-child(1) {
   transition: background 0.3s, transform 0.3s 0.1s;
 }
