@@ -1,12 +1,12 @@
 import React, { Fragment } from "react";
-import Example from "./components/Example";
+import Element from "./components/Element/Element";
 import Layout from "./components/Layout/Layout";
 
 function App() {
   return (
     <Fragment>
       <Layout>
-        <Example />
+        <Element />
       </Layout>
     </Fragment>
   );

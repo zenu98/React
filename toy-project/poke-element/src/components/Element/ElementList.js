@@ -1,5 +1,7 @@
 import React, { useState } from "react";
-import classes from "./Example.module.css";
+import { useDispatch, useSelector } from "react-redux";
+import classes from "./ElementList.module.css";
+import elementSlice, { elementActions } from "../../store/element-slice";
 import { GoFlame } from "react-icons/go";
 import { IoWater, IoEllipseSharp } from "react-icons/io5";
 import {
@@ -23,11 +25,25 @@ import {
 } from "react-icons/fa";
 import { MdCatchingPokemon } from "react-icons/md";
 
-const Example = (props) => {
+const ElementList = () => {
+  const dispatch = useDispatch();
+  const items = useSelector((state) => state.element.items);
   const [toggle, setToggle] = useState(false);
   const clickhandler = () => {
     setToggle((prev) => !prev);
   };
+
+  const selectHandler = (e) => {
+    console.log(items);
+    const name = e.target.id;
+    console.log(elementSlice);
+    dispatch(
+      elementActions.select({
+        name,
+      })
+    );
+  };
+
   return (
     <div className={classes.wrapper}>
       <div className={classes["menu-btn"]} onClick={clickhandler}>
@@ -38,10 +54,28 @@ const Example = (props) => {
 
       <div className={classes["icons-wrapper"]}>
         <div className={classes.icons}>
-          <div className={`${classes.icon} ${toggle === true && classes.show}`}>
-            <GoFlame className={classes["icon-fire"]} />
+          <div
+            className={`${
+              items.some((item) => item.name === "fire")
+                ? classes["icon-background-fire"]
+                : classes["icon-background"]
+            } ${classes.icon} ${toggle === true && classes.show}`}
+            id="fire"
+            onClick={selectHandler}
+          >
+            <GoFlame
+              className={`${
+                items.some((item) => item.name === "fire")
+                  ? classes["icon-clicked"]
+                  : classes["icon-fire"]
+              }`}
+            />
           </div>
-          <div className={`${classes.icon} ${toggle === true && classes.show}`}>
+          <div
+            className={`${classes.icon} ${toggle === true && classes.show}`}
+            id="water"
+            onClick={selectHandler}
+          >
             <IoWater className={classes["icon-water"]} />
           </div>
           <div className={`${classes.icon} ${toggle === true && classes.show}`}>
@@ -100,4 +134,4 @@ const Example = (props) => {
   );
 };
 
-export default Example;
+export default ElementList;

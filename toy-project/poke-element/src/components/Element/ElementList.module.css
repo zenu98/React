@@ -57,109 +57,158 @@
   position: absolute;
   top: calc(50% - 35px);
   left: calc(50% - 35px);
-  background: whitesmoke;
+
   width: 70px;
   height: 70px;
+  border: none;
   border-radius: 50%;
   display: flex;
   cursor: pointer;
   transform: translate(0px, 0px);
   z-index: 1;
 }
+.icon-background {
+  background: whitesmoke;
+}
+
+.icon-background-fire {
+  background: #ff4422;
+}
+
+.icon-fire-clicked {
+  position: absolute;
+  top: calc(50% - 35px);
+  left: calc(50% - 35px);
+  background: #ff4422;
+  width: 70px;
+  height: 70px;
+  border: none;
+  border-radius: 50%;
+  display: flex;
+  cursor: pointer;
+  transform: translate(0px, 0px);
+  z-index: 1;
+}
+
+.icon-clicked {
+  margin: auto;
+  font-size: 55px;
+  color: whitesmoke;
+  pointer-events: none;
+}
+
 .icon-fire {
   margin: auto;
   font-size: 55px;
   color: #ff4422;
+  pointer-events: none;
 }
 .icon-water {
   margin: auto;
   font-size: 55px;
   color: #3399ff;
+  pointer-events: none;
 }
 .icon-electric {
   margin: auto;
   font-size: 55px;
   color: #f8be32;
+  pointer-events: none;
 }
 .icon-grass {
   margin: auto;
   font-size: 50px;
   color: #77cc55;
+  pointer-events: none;
 }
 .icon-ice {
   margin: auto;
   font-size: 55px;
   color: #66ccff;
+  pointer-events: none;
 }
 .icon-fighting {
   margin: auto;
   font-size: 55px;
   color: #bb5544;
+  pointer-events: none;
 }
 .icon-poison {
   margin: auto;
   font-size: 55px;
   color: #aa5599;
+  pointer-events: none;
 }
 .icon-ground {
   margin-left: auto;
   margin-right: auto;
   font-size: 55px;
   color: #ddbb55;
+  pointer-events: none;
 }
 .icon-flying {
   margin: auto;
   font-size: 55px;
   color: #8899ff;
+  pointer-events: none;
 }
 .icon-psychic {
   margin: auto;
   font-size: 55px;
   color: #ff5599;
+  pointer-events: none;
 }
 .icon-bug {
   margin: auto;
   font-size: 55px;
   color: #aabb22;
+  pointer-events: none;
 }
 .icon-rock {
   margin: auto;
   font-size: 55px;
   color: #bbaa66;
+  pointer-events: none;
 }
 .icon-ghost {
   margin: auto;
   font-size: 55px;
   color: #6666bb;
+  pointer-events: none;
 }
 .icon-dragon {
   margin: auto;
   font-size: 55px;
   color: #7766ee;
+  pointer-events: none;
 }
 .icon-dark {
   margin: auto;
   font-size: 55px;
   color: #3c2d23;
+  pointer-events: none;
 }
 .icon-steel {
   margin: auto;
   font-size: 55px;
   color: #8e8e9f;
+  pointer-events: none;
 }
 .icon-fairy {
   margin: auto;
   font-size: 55px;
   color: #ee99ee;
+  pointer-events: none;
 }
 .icon-normal {
   margin: auto;
   font-size: 55px;
   color: #aaaa99;
+  pointer-events: none;
 }
 
 .icon:hover {
-  background: #da7071;
+  background: rgb(208, 208, 208);
 }
 .icon:hover .element {
   color: #272c2c;
