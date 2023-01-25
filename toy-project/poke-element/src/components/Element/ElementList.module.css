@@ -57,7 +57,6 @@
   position: absolute;
   top: calc(50% - 35px);
   left: calc(50% - 35px);
-
   width: 70px;
   height: 70px;
   border: none;
@@ -74,24 +73,67 @@
 .icon-background-fire {
   background: #ff4422;
 }
-
-.icon-fire-clicked {
-  position: absolute;
-  top: calc(50% - 35px);
-  left: calc(50% - 35px);
-  background: #ff4422;
-  width: 70px;
-  height: 70px;
-  border: none;
-  border-radius: 50%;
-  display: flex;
-  cursor: pointer;
-  transform: translate(0px, 0px);
-  z-index: 1;
+.icon-background-water {
+  background: #3399ff;
+}
+.icon-background-electric {
+  background: #f8be32;
+}
+.icon-background-grass {
+  background: #77cc55;
+}
+.icon-background-ice {
+  background: #66ccff;
+}
+.icon-background-fighting {
+  background: #bb5544;
+}
+.icon-background-poison {
+  background: #aa5599;
+}
+.icon-background-ground {
+  background: #ddbb55;
+}
+.icon-background-flying {
+  background: #8899ff;
+}
+.icon-background-psychic {
+  background: #ff5599;
+}
+.icon-background-bug {
+  background: #aabb22;
+}
+.icon-background-rock {
+  background: #bbaa66;
+}
+.icon-background-ghost {
+  background: #6666bb;
+}
+.icon-background-dragon {
+  background: #7766ee;
+}
+.icon-background-dark {
+  background: #3c2d23;
+}
+.icon-background-steel {
+  background: #8e8e9f;
+}
+.icon-background-fairy {
+  background: #ee99ee;
+}
+.icon-background-normal {
+  background: #aa9;
 }
 
 .icon-clicked {
   margin: auto;
+  font-size: 55px;
+  color: whitesmoke;
+  pointer-events: none;
+}
+.ground-icon-clicked {
+  margin-left: auto;
+  margin-right: auto;
   font-size: 55px;
   color: whitesmoke;
   pointer-events: none;
@@ -123,13 +165,13 @@
 }
 .icon-ice {
   margin: auto;
-  font-size: 55px;
+  font-size: 50px;
   color: #66ccff;
   pointer-events: none;
 }
 .icon-fighting {
   margin: auto;
-  font-size: 55px;
+  font-size: 50px;
   color: #bb5544;
   pointer-events: none;
 }
@@ -333,4 +375,15 @@
 }
 .show:nth-child(18) {
   transform: translate(-50px, -300px);
+}
+
+.line {
+  position: absolute;
+  top: 0px;
+  left: 0-5 * 0.5px;
+  width: 5px;
+  height: 30px;
+  transform: rotate20deg;
+  transform-origin: 5 * 0.5px 0px;
+  background-color: red;
 }
