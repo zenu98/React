@@ -1,0 +1,12 @@
+.container {
+  display: flex;
+  width: 100%;
+  background-color: aqua;
+  justify-content: space-around;
+}
+
+.box {
+  width: 400px;
+  height: 400px;
+  background-color: white;
+}

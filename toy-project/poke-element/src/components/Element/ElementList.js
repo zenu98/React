@@ -34,7 +34,7 @@ const ElementList = () => {
   };
 
   const selectHandler = (e) => {
-    console.log(items[0].name);
+    console.log(items);
     const name = e.target.id;
     console.log(elementSlice);
     dispatch(
@@ -46,7 +46,6 @@ const ElementList = () => {
 
   return (
     <div className={classes.wrapper}>
-      <button>제출</button>
       <div className={classes["menu-btn"]} onClick={clickhandler}>
         <div className={classes.btn}>
           <MdCatchingPokemon />
