@@ -2,7 +2,7 @@ import ElementList from "./ElementList";
 import classes from "./Element.module.css";
 import { useSelector, useDispatch } from "react-redux";
 import { fetchTypeData } from "../../store/element-actions";
-import { resultActions } from "../../store/result-slice";
+import Card from "../UI/Card";
 
 const Element = () => {
   const type = useSelector((state) => state.element.items);
@@ -19,7 +19,7 @@ const Element = () => {
   };
 
   return (
-    <div>
+    <Card>
       <ElementList />
       <div>
         <button onClick={fetchHandler}>제출</button>
@@ -28,7 +28,7 @@ const Element = () => {
           <div className={classes.box}></div>
         </div>
       </div>
-    </div>
+    </Card>
   );
 };
 

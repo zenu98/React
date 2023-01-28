@@ -29,7 +29,7 @@ const ElementList = () => {
   const dispatch = useDispatch();
   const items = useSelector((state) => state.element.items);
   const [toggle, setToggle] = useState(false);
-  const clickhandler = () => {
+  const clickHandler = () => {
     setToggle((prev) => !prev);
   };
 
@@ -46,10 +46,22 @@ const ElementList = () => {
 
   return (
     <div className={classes.wrapper}>
-      <div className={classes["menu-btn"]} onClick={clickhandler}>
-        <div className={classes.btn}>
-          <MdCatchingPokemon />
-        </div>
+      <div className={classes["menu-btn"]}>
+        {toggle ? (
+          <img
+            className={classes.pokeball}
+            alt="openedpokeball"
+            src="img/openpokeball.png"
+            onClick={clickHandler}
+          />
+        ) : (
+          <img
+            className={classes.pokeball}
+            alt="pokeball"
+            src="img/pokeball.png"
+            onClick={clickHandler}
+          />
+        )}
       </div>
 
       <div className={classes["icons-wrapper"]}>
@@ -57,8 +69,8 @@ const ElementList = () => {
           <div
             className={`${
               items.some((item) => item.name === "fire")
-                ? classes["icon-background"]
-                : classes["icon-background-fire"]
+                ? classes["icon-background-fire"]
+                : classes["icon-background"]
             } ${classes.icon} ${toggle === true && classes.show}`}
             id="fire"
             onClick={selectHandler}
@@ -66,16 +78,16 @@ const ElementList = () => {
             <GoFlame
               className={`${
                 items.some((item) => item.name === "fire")
-                  ? classes["icon-fire"]
-                  : classes["icon-clicked"]
+                  ? classes["icon-clicked"]
+                  : classes["icon-fire"]
               }`}
             />
           </div>
           <div
             className={`${
               items.some((item) => item.name === "water")
-                ? classes["icon-background"]
-                : classes["icon-background-water"]
+                ? classes["icon-background-water"]
+                : classes["icon-background"]
             } ${classes.icon} ${toggle === true && classes.show}`}
             id="water"
             onClick={selectHandler}
@@ -83,16 +95,16 @@ const ElementList = () => {
             <IoWater
               className={`${
                 items.some((item) => item.name === "water")
-                  ? classes["icon-water"]
-                  : classes["icon-clicked"]
+                  ? classes["icon-clicked"]
+                  : classes["icon-water"]
               }`}
             />
           </div>
           <div
             className={`${
               items.some((item) => item.name === "electric")
-                ? classes["icon-background"]
-                : classes["icon-background-electric"]
+                ? classes["icon-background-electric"]
+                : classes["icon-background"]
             } ${classes.icon} ${toggle === true && classes.show}`}
             id="electric"
             onClick={selectHandler}
@@ -100,16 +112,16 @@ const ElementList = () => {
             <AiFillThunderbolt
               className={`${
                 items.some((item) => item.name === "electric")
-                  ? classes["icon-electric"]
-                  : classes["icon-clicked"]
+                  ? classes["icon-clicked"]
+                  : classes["icon-electric"]
               }`}
             />
           </div>
           <div
             className={`${
               items.some((item) => item.name === "ice")
-                ? classes["icon-background"]
-                : classes["icon-background-ice"]
+                ? classes["icon-background-ice"]
+                : classes["icon-background"]
             } ${classes.icon} ${toggle === true && classes.show}`}
             id="ice"
             onClick={selectHandler}
@@ -117,16 +129,16 @@ const ElementList = () => {
             <GiFrozenOrb
               className={`${
                 items.some((item) => item.name === "ice")
-                  ? classes["icon-ice"]
-                  : classes["icon-clicked"]
+                  ? classes["icon-clicked"]
+                  : classes["icon-ice"]
               }`}
             />
           </div>
           <div
             className={`${
               items.some((item) => item.name === "grass")
-                ? classes["icon-background"]
-                : classes["icon-background-grass"]
+                ? classes["icon-background-grass"]
+                : classes["icon-background"]
             } ${classes.icon} ${toggle === true && classes.show}`}
             id="grass"
             onClick={selectHandler}
@@ -134,16 +146,16 @@ const ElementList = () => {
             <GiHighGrass
               className={`${
                 items.some((item) => item.name === "grass")
-                  ? classes["icon-grass"]
-                  : classes["icon-clicked"]
+                  ? classes["icon-clicked"]
+                  : classes["icon-grass"]
               }`}
             />
           </div>
           <div
             className={`${
               items.some((item) => item.name === "fighting")
-                ? classes["icon-background"]
-                : classes["icon-background-fighting"]
+                ? classes["icon-background-fighting"]
+                : classes["icon-background"]
             } ${classes.icon} ${toggle === true && classes.show}`}
             id="fighting"
             onClick={selectHandler}
@@ -151,16 +163,16 @@ const ElementList = () => {
             <FaFistRaised
               className={`${
                 items.some((item) => item.name === "fighting")
-                  ? classes["icon-fighting"]
-                  : classes["icon-clicked"]
+                  ? classes["icon-clicked"]
+                  : classes["icon-fighting"]
               }`}
             />
           </div>
           <div
             className={`${
               items.some((item) => item.name === "poison")
-                ? classes["icon-background"]
-                : classes["icon-background-poison"]
+                ? classes["icon-background-poison"]
+                : classes["icon-background"]
             } ${classes.icon} ${toggle === true && classes.show}`}
             id="poison"
             onClick={selectHandler}
@@ -168,8 +180,8 @@ const ElementList = () => {
             <GiPoisonBottle
               className={`${
                 items.some((item) => item.name === "poison")
-                  ? classes["icon-poison"]
-                  : classes["icon-clicked"]
+                  ? classes["icon-clicked"]
+                  : classes["icon-poison"]
               }`}
             />
           </div>
@@ -177,8 +189,8 @@ const ElementList = () => {
           <div
             className={`${
               items.some((item) => item.name === "ground")
-                ? classes["icon-background"]
-                : classes["icon-background-ground"]
+                ? classes["icon-background-ground"]
+                : classes["icon-background"]
             } ${classes.icon} ${toggle === true && classes.show}`}
             id="ground"
             onClick={selectHandler}
@@ -186,16 +198,16 @@ const ElementList = () => {
             <GiEarthSpit
               className={`${
                 items.some((item) => item.name === "ground")
-                  ? classes["icon-ground"]
-                  : classes["ground-icon-clicked"]
+                  ? classes["ground-icon-clicked"]
+                  : classes["icon-ground"]
               }`}
             />
           </div>
           <div
             className={`${
               items.some((item) => item.name === "flying")
-                ? classes["icon-background"]
-                : classes["icon-background-flying"]
+                ? classes["icon-background-flying"]
+                : classes["icon-background"]
             } ${classes.icon} ${toggle === true && classes.show}`}
             id="flying"
             onClick={selectHandler}
@@ -203,16 +215,16 @@ const ElementList = () => {
             <GiLibertyWing
               className={`${
                 items.some((item) => item.name === "flying")
-                  ? classes["icon-flying"]
-                  : classes["icon-clicked"]
+                  ? classes["icon-clicked"]
+                  : classes["icon-flying"]
               }`}
             />
           </div>
           <div
             className={`${
               items.some((item) => item.name === "rock")
-                ? classes["icon-background"]
-                : classes["icon-background-rock"]
+                ? classes["icon-background-rock"]
+                : classes["icon-background"]
             } ${classes.icon} ${toggle === true && classes.show}`}
             id="rock"
             onClick={selectHandler}
@@ -220,16 +232,16 @@ const ElementList = () => {
             <GiStoneBlock
               className={`${
                 items.some((item) => item.name === "rock")
-                  ? classes["icon-rock"]
-                  : classes["icon-clicked"]
+                  ? classes["icon-clicked"]
+                  : classes["icon-rock"]
               }`}
             />
           </div>
           <div
             className={`${
               items.some((item) => item.name === "dragon")
-                ? classes["icon-background"]
-                : classes["icon-background-dragon"]
+                ? classes["icon-background-dragon"]
+                : classes["icon-background"]
             } ${classes.icon} ${toggle === true && classes.show}`}
             id="dragon"
             onClick={selectHandler}
@@ -237,16 +249,16 @@ const ElementList = () => {
             <FaDragon
               className={`${
                 items.some((item) => item.name === "dragon")
-                  ? classes["icon-dragon"]
-                  : classes["icon-clicked"]
+                  ? classes["icon-clicked"]
+                  : classes["icon-dragon"]
               }`}
             />
           </div>
           <div
             className={`${
               items.some((item) => item.name === "bug")
-                ? classes["icon-background"]
-                : classes["icon-background-bug"]
+                ? classes["icon-background-bug"]
+                : classes["icon-background"]
             } ${classes.icon} ${toggle === true && classes.show}`}
             id="bug"
             onClick={selectHandler}
@@ -254,16 +266,16 @@ const ElementList = () => {
             <FaBug
               className={`${
                 items.some((item) => item.name === "bug")
-                  ? classes["icon-bug"]
-                  : classes["icon-clicked"]
+                  ? classes["icon-clicked"]
+                  : classes["icon-bug"]
               }`}
             />
           </div>
           <div
             className={`${
               items.some((item) => item.name === "psychic")
-                ? classes["icon-background"]
-                : classes["icon-background-psychic"]
+                ? classes["icon-background-psychic"]
+                : classes["icon-background"]
             } ${classes.icon} ${toggle === true && classes.show}`}
             id="psychic"
             onClick={selectHandler}
@@ -271,16 +283,16 @@ const ElementList = () => {
             <FaBullseye
               className={`${
                 items.some((item) => item.name === "psychic")
-                  ? classes["icon-psychic"]
-                  : classes["icon-clicked"]
+                  ? classes["icon-clicked"]
+                  : classes["icon-psychic"]
               }`}
             />
           </div>
           <div
             className={`${
               items.some((item) => item.name === "steel")
-                ? classes["icon-background"]
-                : classes["icon-background-steel"]
+                ? classes["icon-background-steel"]
+                : classes["icon-background"]
             } ${classes.icon} ${toggle === true && classes.show}`}
             id="steel"
             onClick={selectHandler}
@@ -288,8 +300,8 @@ const ElementList = () => {
             <FaUikit
               className={`${
                 items.some((item) => item.name === "steel")
-                  ? classes["icon-steel"]
-                  : classes["icon-clicked"]
+                  ? classes["icon-clicked"]
+                  : classes["icon-steel"]
               }`}
             />
           </div>
@@ -297,8 +309,8 @@ const ElementList = () => {
           <div
             className={`${
               items.some((item) => item.name === "ghost")
-                ? classes["icon-background"]
-                : classes["icon-background-ghost"]
+                ? classes["icon-background-ghost"]
+                : classes["icon-background"]
             } ${classes.icon} ${toggle === true && classes.show}`}
             id="ghost"
             onClick={selectHandler}
@@ -306,16 +318,16 @@ const ElementList = () => {
             <FaGhost
               className={`${
                 items.some((item) => item.name === "ghost")
-                  ? classes["icon-ghost"]
-                  : classes["icon-clicked"]
+                  ? classes["icon-clicked"]
+                  : classes["icon-ghost"]
               }`}
             />
           </div>
           <div
             className={`${
               items.some((item) => item.name === "dark")
-                ? classes["icon-background"]
-                : classes["icon-background-dark"]
+                ? classes["icon-background-dark"]
+                : classes["icon-background"]
             } ${classes.icon} ${toggle === true && classes.show}`}
             id="dark"
             onClick={selectHandler}
@@ -323,16 +335,16 @@ const ElementList = () => {
             <GiEvilEyes
               className={`${
                 items.some((item) => item.name === "dark")
-                  ? classes["icon-dark"]
-                  : classes["icon-clicked"]
+                  ? classes["icon-clicked"]
+                  : classes["icon-dark"]
               }`}
             />
           </div>
           <div
             className={`${
               items.some((item) => item.name === "fairy")
-                ? classes["icon-background"]
-                : classes["icon-background-fairy"]
+                ? classes["icon-background-fairy"]
+                : classes["icon-background"]
             } ${classes.icon} ${toggle === true && classes.show}`}
             id="fairy"
             onClick={selectHandler}
@@ -340,16 +352,16 @@ const ElementList = () => {
             <GiFairyWings
               className={`${
                 items.some((item) => item.name === "fairy")
-                  ? classes["icon-fairy"]
-                  : classes["icon-clicked"]
+                  ? classes["icon-clicked"]
+                  : classes["icon-fairy"]
               }`}
             />
           </div>
           <div
             className={`${
               items.some((item) => item.name === "normal")
-                ? classes["icon-background"]
-                : classes["icon-background-normal"]
+                ? classes["icon-background-normal"]
+                : classes["icon-background"]
             } ${classes.icon} ${toggle === true && classes.show}`}
             id="normal"
             onClick={selectHandler}
@@ -357,8 +369,8 @@ const ElementList = () => {
             <IoEllipseSharp
               className={`${
                 items.some((item) => item.name === "normal")
-                  ? classes["icon-normal"]
-                  : classes["icon-clicked"]
+                  ? classes["icon-clicked"]
+                  : classes["icon-normal"]
               }`}
             />
           </div>

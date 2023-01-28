@@ -3,11 +3,18 @@
   height: 100vh;
   position: relative;
 }
+.pokeball {
+  width: 150px;
+  height: 150px;
+}
 .menu-btn {
-  background: #da7071;
+  overflow: hidden;
+  background-color: white;
+  color: black;
   border-radius: 50%;
-  width: 100px;
-  height: 100px;
+  vertical-align: bottom;
+  width: 150px;
+  height: 150px;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -15,12 +22,25 @@
   cursor: pointer;
   transition: background 0.3s;
   z-index: 2;
-  box-shadow: 0px 1px 5px rgba(0, 0, 0, 0.3);
 }
-.menu-btn:hover,
-.active {
-  background: #d15052;
+
+.menu-btn-in {
+  background-color: white;
+  border-style: solid;
+  border-color: #d81212;
+  z-index: 3;
+  border-radius: 50%;
+  width: 25px;
+  height: 25px;
 }
+.menu-btn:hover {
+  color: #d81212;
+}
+
+.menu-btn-in:hover {
+  background-color: #d81212;
+}
+
 .menu-btn,
 .icons-wrapper {
   position: absolute;
@@ -29,31 +49,12 @@
   transform: translate(-50%, -50%);
   transition-delay: 0.1s;
 }
-.menu-btn span {
-  display: block;
-  width: 30px;
-  height: 3px;
-  background: #333;
-  margin-bottom: 5px;
-  transition: background 0.3s, transform 0.3s;
-}
-.menu-btn span:last-child {
-  margin-bottom: 0;
-}
-.active span:nth-child(1) {
-  transform: rotate(45deg) translate(5px, 5px);
-}
-.active span:nth-child(2) {
-  opacity: 0;
-}
-.active span:nth-child(3) {
-  transform: rotate(-45deg) translate(6px, -5px);
-}
 
 .icons {
   position: relative;
 }
 .icon {
+  box-shadow: 0px 1px 5px rgba(0, 0, 0, 0.3);
   position: absolute;
   top: calc(50% - 35px);
   left: calc(50% - 35px);
@@ -67,62 +68,80 @@
   z-index: 1;
 }
 .icon-background {
-  background: whitesmoke;
+  background: white;
 }
 
 .icon-background-fire {
   background: #ff4422;
+  box-shadow: 0px 1px 5px rgba(0, 0, 0, 0.75);
 }
 .icon-background-water {
   background: #3399ff;
+  box-shadow: 0px 1px 5px rgba(0, 0, 0, 0.75);
 }
 .icon-background-electric {
   background: #f8be32;
+  box-shadow: 0px 1px 5px rgba(0, 0, 0, 0.75);
 }
 .icon-background-grass {
   background: #77cc55;
+  box-shadow: 0px 1px 5px rgba(0, 0, 0, 0.75);
 }
 .icon-background-ice {
   background: #66ccff;
+  box-shadow: 0px 1px 5px rgba(0, 0, 0, 0.75);
 }
 .icon-background-fighting {
   background: #bb5544;
+  box-shadow: 0px 1px 5px rgba(0, 0, 0, 0.75);
 }
 .icon-background-poison {
   background: #aa5599;
+  box-shadow: 0px 1px 5px rgba(0, 0, 0, 0.75);
 }
 .icon-background-ground {
   background: #ddbb55;
+  box-shadow: 0px 1px 5px rgba(0, 0, 0, 0.75);
 }
 .icon-background-flying {
   background: #8899ff;
+  box-shadow: 0px 1px 5px rgba(0, 0, 0, 0.75);
 }
 .icon-background-psychic {
+  box-shadow: 0px 1px 5px rgba(0, 0, 0, 0.75);
   background: #ff5599;
 }
 .icon-background-bug {
+  box-shadow: 0px 1px 5px rgba(0, 0, 0, 0.75);
   background: #aabb22;
 }
 .icon-background-rock {
+  box-shadow: 0px 1px 5px rgba(0, 0, 0, 0.75);
   background: #bbaa66;
 }
 .icon-background-ghost {
   background: #6666bb;
+  box-shadow: 0px 1px 5px rgba(0, 0, 0, 0.75);
 }
 .icon-background-dragon {
   background: #7766ee;
+  box-shadow: 0px 1px 5px rgba(0, 0, 0, 0.75);
 }
 .icon-background-dark {
   background: #3c2d23;
+  box-shadow: 0px 1px 5px rgba(0, 0, 0, 0.75);
 }
 .icon-background-steel {
   background: #8e8e9f;
+  box-shadow: 0px 1px 5px rgba(0, 0, 0, 0.75);
 }
 .icon-background-fairy {
   background: #ee99ee;
+  box-shadow: 0px 1px 5px rgba(0, 0, 0, 0.75);
 }
 .icon-background-normal {
   background: #aa9;
+  box-shadow: 0px 1px 5px rgba(0, 0, 0, 0.75);
 }
 
 .icon-clicked {
