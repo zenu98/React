@@ -3,18 +3,43 @@
   height: 100vh;
   position: relative;
 }
-.pokeball {
-  width: 150px;
-  height: 150px;
+
+.wrapper-disclicked {
+  width: 100%;
+  height: 100vh;
+  position: relative;
+  background: rgba(0, 0, 0);
+  animation: fadein 1.5s ease-out forwards;
 }
+.wrapper-clicked {
+  width: 100%;
+  height: 100vh;
+  position: relative;
+  background: rgba(0, 0, 0);
+  animation: fadeout 1.5s ease-out forwards;
+}
+.pokeball {
+  width: 80px;
+  height: 80px;
+}
+.groundball {
+  width: 40px;
+  height: 40px;
+}
+.ground {
+  position: absolute;
+  top: 80.5%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  transition-delay: 0.1s;
+}
+
 .menu-btn {
   overflow: hidden;
-  background-color: white;
-  color: black;
   border-radius: 50%;
   vertical-align: bottom;
-  width: 150px;
-  height: 150px;
+  width: 80px;
+  height: 80px;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -49,6 +74,14 @@
   transform: translate(-50%, -50%);
   transition-delay: 0.1s;
 }
+.icons-wrapper-invisible {
+  visibility: hidden;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  transition-delay: 0.1s;
+}
 
 .icons {
   position: relative;
@@ -72,74 +105,92 @@
 }
 
 .icon-background-fire {
+  border: 4px solid white;
   background: #ff4422;
   box-shadow: 0px 1px 5px rgba(0, 0, 0, 0.75);
 }
 .icon-background-water {
+  border: 4px solid white;
   background: #3399ff;
   box-shadow: 0px 1px 5px rgba(0, 0, 0, 0.75);
 }
 .icon-background-electric {
+  border: 4px solid white;
   background: #f8be32;
   box-shadow: 0px 1px 5px rgba(0, 0, 0, 0.75);
 }
 .icon-background-grass {
+  border: 4px solid white;
   background: #77cc55;
   box-shadow: 0px 1px 5px rgba(0, 0, 0, 0.75);
 }
 .icon-background-ice {
+  border: 4px solid white;
   background: #66ccff;
   box-shadow: 0px 1px 5px rgba(0, 0, 0, 0.75);
 }
 .icon-background-fighting {
+  border: 4px solid white;
   background: #bb5544;
   box-shadow: 0px 1px 5px rgba(0, 0, 0, 0.75);
 }
 .icon-background-poison {
+  border: 4px solid white;
   background: #aa5599;
   box-shadow: 0px 1px 5px rgba(0, 0, 0, 0.75);
 }
 .icon-background-ground {
+  border: 4px solid white;
   background: #ddbb55;
   box-shadow: 0px 1px 5px rgba(0, 0, 0, 0.75);
 }
 .icon-background-flying {
+  border: 4px solid white;
   background: #8899ff;
   box-shadow: 0px 1px 5px rgba(0, 0, 0, 0.75);
 }
 .icon-background-psychic {
+  border: 4px solid white;
   box-shadow: 0px 1px 5px rgba(0, 0, 0, 0.75);
   background: #ff5599;
 }
 .icon-background-bug {
+  border: 4px solid white;
   box-shadow: 0px 1px 5px rgba(0, 0, 0, 0.75);
   background: #aabb22;
 }
 .icon-background-rock {
+  border: 4px solid white;
   box-shadow: 0px 1px 5px rgba(0, 0, 0, 0.75);
   background: #bbaa66;
 }
 .icon-background-ghost {
+  border: 4px solid white;
   background: #6666bb;
   box-shadow: 0px 1px 5px rgba(0, 0, 0, 0.75);
 }
 .icon-background-dragon {
+  border: 4px solid white;
   background: #7766ee;
   box-shadow: 0px 1px 5px rgba(0, 0, 0, 0.75);
 }
 .icon-background-dark {
+  border: 4px solid white;
   background: #3c2d23;
   box-shadow: 0px 1px 5px rgba(0, 0, 0, 0.75);
 }
 .icon-background-steel {
+  border: 4px solid white;
   background: #8e8e9f;
   box-shadow: 0px 1px 5px rgba(0, 0, 0, 0.75);
 }
 .icon-background-fairy {
+  border: 4px solid white;
   background: #ee99ee;
   box-shadow: 0px 1px 5px rgba(0, 0, 0, 0.75);
 }
 .icon-background-normal {
+  border: 4px solid white;
   background: #aa9;
   box-shadow: 0px 1px 5px rgba(0, 0, 0, 0.75);
 }
@@ -287,13 +338,13 @@
 }
 
 .icon:nth-child(1) {
-  transition: background 0.3s, transform 0.3s 0.1s;
+  transition: 0.3s, transform 0.3s 0.1s;
 }
 .icon:nth-child(2) {
-  transition: background 0.3s, transform 0.3s 0.15s;
+  transition: 0.3s, transform 0.3s 0.15s;
 }
 .icon:nth-child(3) {
-  transition: background 0.3s, transform 0.3s 0.2s;
+  transition: 0.3s, transform 0.3s 0.2s;
 }
 .icon:nth-child(4) {
   transition: background 0.3s, transform 0.3s 0.25s;
@@ -396,13 +447,21 @@
   transform: translate(-50px, -300px);
 }
 
-.line {
-  position: absolute;
-  top: 0px;
-  left: 0-5 * 0.5px;
-  width: 5px;
-  height: 30px;
-  transform: rotate20deg;
-  transform-origin: 5 * 0.5px 0px;
-  background-color: red;
+@keyframes fadeout {
+  0% {
+    opacity: 0;
+  }
+
+  100% {
+    opacity: 0.5;
+  }
+}
+@keyframes fadein {
+  100% {
+    opacity: 0;
+  }
+
+  0% {
+    opacity: 0.5;
+  }
 }

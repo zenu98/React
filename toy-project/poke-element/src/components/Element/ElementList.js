@@ -33,6 +33,8 @@ const ElementList = () => {
     setToggle((prev) => !prev);
   };
 
+  const showMenuHanler = () => {};
+
   const selectHandler = (e) => {
     console.log(items);
     const name = e.target.id;
@@ -45,26 +47,39 @@ const ElementList = () => {
   };
 
   return (
-    <div className={classes.wrapper}>
+    <div className={`${classes["wrapper"]}`}>
+      <div
+        className={`${
+          toggle ? classes["wrapper-clicked"] : classes["wrapper-disclicked"]
+        }`}
+      ></div>
+      <div className={classes["ground"]}>
+        <img
+          className={classes.groundball}
+          alt="openedpokeball"
+          src="img/pixelball.png"
+          onClick={clickHandler}
+        />
+      </div>
       <div className={classes["menu-btn"]}>
         {toggle ? (
           <img
             className={classes.pokeball}
             alt="openedpokeball"
-            src="img/openpokeball.png"
+            src="img/pixelball.png"
             onClick={clickHandler}
           />
         ) : (
           <img
             className={classes.pokeball}
             alt="pokeball"
-            src="img/pokeball.png"
+            src="img/pixelball.png"
             onClick={clickHandler}
           />
         )}
       </div>
 
-      <div className={classes["icons-wrapper"]}>
+      <div className={`${classes["icons-wrapper"]}`}>
         <div className={classes.icons}>
           <div
             className={`${
