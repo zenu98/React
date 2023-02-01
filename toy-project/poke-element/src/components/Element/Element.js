@@ -22,13 +22,13 @@ const Element = () => {
   return (
     <Card>
       <ElementList />
-      <div>
+      {/* <div>
         <button onClick={fetchHandler}>제출</button>
         <div className={classes.container}>
           <div className={classes.box}></div>
           <div className={classes.box}></div>
         </div>
-      </div>
+      </div> */}
     </Card>
   );
 };

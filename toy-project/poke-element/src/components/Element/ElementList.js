@@ -23,7 +23,6 @@ import {
   FaGhost,
   FaBullseye,
 } from "react-icons/fa";
-import { MdCatchingPokemon } from "react-icons/md";
 
 const ElementList = () => {
   const dispatch = useDispatch();
@@ -32,8 +31,6 @@ const ElementList = () => {
   const clickHandler = () => {
     setToggle((prev) => !prev);
   };
-
-  const showMenuHanler = () => {};
 
   const selectHandler = (e) => {
     console.log(items);
@@ -55,32 +52,36 @@ const ElementList = () => {
       ></div>
       <div className={classes["ground"]}>
         <img
-          className={classes.groundball}
-          alt="openedpokeball"
+          className={`${
+            toggle ? classes["question-inactive"] : classes["question-active"]
+          }`}
+          alt="question"
+          src="img/question.png"
+        />
+        <img
+          className={`${
+            toggle
+              ? classes["groundball-inactive"]
+              : classes["groundball-active"]
+          }`}
+          alt="groundball"
           src="img/pixelball.png"
           onClick={clickHandler}
         />
       </div>
       <div className={classes["menu-btn"]}>
-        {toggle ? (
-          <img
-            className={classes.pokeball}
-            alt="openedpokeball"
-            src="img/pixelball.png"
-            onClick={clickHandler}
-          />
-        ) : (
-          <img
-            className={classes.pokeball}
-            alt="pokeball"
-            src="img/pixelball.png"
-            onClick={clickHandler}
-          />
-        )}
+        <img
+          className={`${
+            toggle ? classes["menuball-active"] : classes["menuball-inactive"]
+          }`}
+          alt="menuball"
+          src="img/pixelball.png"
+          onClick={clickHandler}
+        />
       </div>
 
       <div className={`${classes["icons-wrapper"]}`}>
-        <div className={classes.icons}>
+        <div className={`${toggle ? classes.icons : classes.disicons}`}>
           <div
             className={`${
               items.some((item) => item.name === "fire")

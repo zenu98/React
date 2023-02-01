@@ -9,32 +9,67 @@
   height: 100vh;
   position: relative;
   background: rgba(0, 0, 0);
-  animation: fadein 1.5s ease-out forwards;
+  animation: backfadein 2s ease-out forwards;
 }
 .wrapper-clicked {
   width: 100%;
   height: 100vh;
   position: relative;
   background: rgba(0, 0, 0);
-  animation: fadeout 1.5s ease-out forwards;
+  animation: backfadeout 1.5s ease-out forwards;
+  z-index: 2;
 }
-.pokeball {
+
+.question-active {
+  width: 30px;
+  height: 40px;
+  margin-bottom: 10px;
+  transform: rotate(-3deg);
+  margin-left: 5px;
+  animation: ballfadeout 1.5s ease-out forwards;
+}
+.question-inactive {
+  visibility: hidden;
+}
+
+.menuball-active {
   width: 80px;
   height: 80px;
+  cursor: pointer;
 }
-.groundball {
+.menuball-inactive {
+  pointer-events: none;
+  width: 80px;
+  height: 80px;
+  animation: ballfadein 1.3s ease-out forwards;
+}
+.groundball-inactive {
   width: 40px;
   height: 40px;
+  visibility: hidden;
+}
+.groundball-active {
+  cursor: pointer;
+  width: 40px;
+  height: 40px;
+  animation: ballfadeout 1.5s ease-out forwards;
 }
 .ground {
+  display: flex;
+  flex-direction: column;
   position: absolute;
-  top: 80.5%;
+  top: 76.5%;
   left: 50%;
   transform: translate(-50%, -50%);
   transition-delay: 0.1s;
 }
 
 .menu-btn {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  transition-delay: 0.1s;
   overflow: hidden;
   border-radius: 50%;
   vertical-align: bottom;
@@ -44,9 +79,9 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  cursor: pointer;
-  transition: background 0.3s;
-  z-index: 2;
+
+  transition: 0.3s;
+  z-index: 6;
 }
 
 .menu-btn-in {
@@ -66,13 +101,13 @@
   background-color: #d81212;
 }
 
-.menu-btn,
 .icons-wrapper {
   position: absolute;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
   transition-delay: 0.1s;
+  z-index: 5;
 }
 .icons-wrapper-invisible {
   visibility: hidden;
@@ -84,6 +119,11 @@
 }
 
 .icons {
+  position: relative;
+}
+.disicons {
+  cursor: default;
+  animation: iconfadein 1.2s ease-out forwards;
   position: relative;
 }
 .icon {
@@ -98,7 +138,7 @@
   display: flex;
   cursor: pointer;
   transform: translate(0px, 0px);
-  z-index: 1;
+  z-index: 2;
 }
 .icon-background {
   background: white;
@@ -338,13 +378,13 @@
 }
 
 .icon:nth-child(1) {
-  transition: 0.3s, transform 0.3s 0.1s;
+  transition: background 0.3s, transform 0.3s 0.1s;
 }
 .icon:nth-child(2) {
-  transition: 0.3s, transform 0.3s 0.15s;
+  transition: background 0.3s, transform 0.3s 0.15s;
 }
 .icon:nth-child(3) {
-  transition: 0.3s, transform 0.3s 0.2s;
+  transition: background 0.3s, transform 0.3s 0.2s;
 }
 .icon:nth-child(4) {
   transition: background 0.3s, transform 0.3s 0.25s;
@@ -447,21 +487,56 @@
   transform: translate(-50px, -300px);
 }
 
-@keyframes fadeout {
+@keyframes backfadeout {
   0% {
     opacity: 0;
   }
 
   100% {
-    opacity: 0.5;
+    opacity: 0.65;
   }
 }
-@keyframes fadein {
+@keyframes backfadein {
   100% {
     opacity: 0;
   }
 
   0% {
-    opacity: 0.5;
+    opacity: 0.65;
+  }
+}
+
+@keyframes ballfadein {
+  100% {
+    opacity: 0;
+  }
+  90% {
+    opacity: 1;
+  }
+  0% {
+    opacity: 1;
+  }
+}
+
+@keyframes ballfadeout {
+  100% {
+    opacity: 1;
+  }
+  90% {
+    opacity: 0;
+  }
+  0% {
+    opacity: 0;
+  }
+}
+@keyframes iconfadein {
+  100% {
+    opacity: 0;
+  }
+  95% {
+    opacity: 1;
+  }
+  0% {
+    opacity: 1;
   }
 }
