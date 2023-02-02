@@ -1,7 +1,44 @@
 .background {
+  display: flex;
   width: 100vw;
   height: 100vh;
   background-size: contain;
-
   background-image: url("../../../public/img/day.png");
+}
+
+.titlebox {
+  display: flex;
+  flex-direction: column;
+
+  margin: 160px auto 0 auto;
+}
+
+.title {
+  margin: 0 auto;
+  font-size: 80px;
+  font-family: "bitbit";
+  background: linear-gradient(#dcaf21, #c16a37);
+  color: transparent;
+  -webkit-background-clip: text;
+  filter: drop-shadow(3px 5px #333);
+}
+
+#poketmon {
+  position: absolute;
+  width: 50px;
+  height: 50px;
+  display: flex;
+  top: 72%;
+  left: 20%;
+}
+
+@font-face {
+  font-family: "neodgm";
+  src: url("../../font/neodgm.ttf");
+}
+
+@font-face {
+  font-family: "bitbit";
+  src: url("//cdn.df.nexon.com/img/common/font/DNFBitBit-Regular.woff"),
+    url("//cdn.df.nexon.com/img/common/font/DNFBitBit-Regular.woff2");
 }
