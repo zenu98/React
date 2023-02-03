@@ -24,6 +24,7 @@ const elementSlice = createSlice({
       } else {
         console.log("있다");
         state.items = state.items.filter((item) => item.name !== newItem.name);
+        console.log(state.items);
       }
     },
   },

@@ -2,8 +2,8 @@ import { Fragment } from "react";
 import ElementList from "./ElementList";
 import classes from "./Element.module.css";
 import { useSelector, useDispatch } from "react-redux";
-import { fetchTypeData } from "../../store/element-actions";
-import Card from "../UI/Card";
+import { fetchTypeData, fetchTypeDatas } from "../../store/element-actions";
+import { elementActions } from "../../store/element-slice";
 
 const Element = () => {
   const type = useSelector((state) => state.element.items);
@@ -13,23 +13,17 @@ const Element = () => {
   console.log(result);
   const dispatch = useDispatch();
   const fetchHandler = () => {
+    console.log("Clicked!");
     dispatch(fetchTypeData(type[0]));
     if (type.length === 2) {
-      dispatch(fetchTypeData(type[1]));
+      dispatch(fetchTypeDatas(type[1]));
     }
   };
 
   return (
-    <Card>
-      <ElementList />
-      {/* <div>
-        <button onClick={fetchHandler}>제출</button>
-        <div className={classes.container}>
-          <div className={classes.box}></div>
-          <div className={classes.box}></div>
-        </div>
-      </div> */}
-    </Card>
+    <>
+      <ElementList onFetch={fetchHandler} />
+    </>
   );
 };
 

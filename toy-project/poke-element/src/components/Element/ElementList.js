@@ -24,7 +24,7 @@ import {
   FaBullseye,
 } from "react-icons/fa";
 
-const ElementList = () => {
+const ElementList = (props) => {
   const dispatch = useDispatch();
   const items = useSelector((state) => state.element.items);
   const [toggle, setToggle] = useState(false);
@@ -50,6 +50,7 @@ const ElementList = () => {
           toggle ? classes["wrapper-clicked"] : classes["wrapper-disclicked"]
         }`}
       ></div>
+
       <div className={classes["ground"]}>
         <img
           className={`${
@@ -78,6 +79,7 @@ const ElementList = () => {
           src="img/pixelball.png"
           onClick={clickHandler}
         />
+        {toggle && <button onClick={props.onFetch}>제출</button>}
       </div>
 
       <div className={`${classes["icons-wrapper"]}`}>
