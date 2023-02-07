@@ -1,7 +1,68 @@
 .background {
   width: 100vw;
   height: 100vh;
-  background-size: contain;
-
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center center;
   background-image: url("../../../public/img/evening.jpg");
+}
+
+.container {
+  display: flex;
+  width: 100vw;
+  height: 100vh;
+  justify-content: center;
+  align-items: center;
+}
+.box {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  background-color: black;
+  border-radius: 10px;
+  background-color: rgba(0, 0, 0, 0.5);
+  width: 80vw;
+  height: 90vh;
+}
+
+.textbox {
+  display: flex;
+  flex-direction: column;
+  width: 45%;
+  height: 95%;
+}
+
+.title {
+  display: flex;
+  justify-content: center;
+  margin: 1rem 0 1rem 0;
+  font-family: "bitbit";
+  font-size: 5rem;
+  color: #f62463;
+  height: 10%;
+}
+.number {
+  margin: 1rem 0 0.5rem 0;
+}
+.content {
+  flex-direction: column;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  font-family: "bitbit";
+  font-size: 2rem;
+  color: #fffade;
+}
+.type {
+  width: 80px;
+  height: 30px;
+}
+
+@font-face {
+  font-family: "bitbit";
+  src: url("//cdn.df.nexon.com/img/common/font/DNFBitBit-Regular.woff"),
+    url("//cdn.df.nexon.com/img/common/font/DNFBitBit-Regular.woff2");
 }
