@@ -14,12 +14,31 @@ export const fetchTypeData = (type) => {
 
       return data;
     };
+    const fetchDefenseData = async () => {
+      console.log(type.name);
+      const response = await fetch(
+        `https://pokemon-8a1dd-default-rtdb.firebaseio.com/defense/${type.name}.json`
+      );
+      if (!response.ok) {
+        throw new Error("error");
+      }
+      const defenseData = await response.json();
+
+      return defenseData;
+    };
     try {
       const typeData = await fetchData();
-      console.log(typeData);
+      const defenseTypeData = await fetchDefenseData();
+      console.log(defenseTypeData);
+
       dispatch(
         resultActions.setType({
           typeData,
+        })
+      );
+      dispatch(
+        resultActions.setDefenseType({
+          defenseTypeData,
         })
       );
     } catch (error) {

@@ -1,9 +1,11 @@
-import { createSlice, current } from "@reduxjs/toolkit";
+import { createSlice } from "@reduxjs/toolkit";
 
 const resultSlice = createSlice({
   name: "type",
   initialState: {
     types: [],
+    defenseTypes: [],
+    defenseTypesArr: [],
     typesArr: [],
 
     changed: false,
@@ -36,6 +38,17 @@ const resultSlice = createSlice({
       state.typesArr = Object.entries(second[0]);
       console.log(state.typesArr);
       state.typesArr.map((item) => console.log(item));
+    },
+    setDefenseType(state, action) {
+      console.log("defense");
+      const defenseTypeData = action.payload;
+
+      state.changed = true;
+
+      state.defenseTypes = Object.values(defenseTypeData);
+      console.log(state.defenseTypes);
+      state.defenseTypesArr = Object.entries(state.defenseTypes[0]);
+      console.log(state.defenseTypesArr);
     },
   },
 });
