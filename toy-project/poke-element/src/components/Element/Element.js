@@ -15,6 +15,7 @@ const Element = () => {
   const fetchHandler = () => {
     console.log("Clicked!");
     dispatch(fetchTypeData(type[0]));
+
     if (type.length === 2) {
       dispatch(fetchTypeDatas(type[1]));
     }
