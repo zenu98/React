@@ -171,18 +171,18 @@ const ElementList = (props) => {
           </div>
           <div
             className={`${
-              items.some((item) => item.name === "fighting")
-                ? classes["icon-background-fighting"]
+              items.some((item) => item.name === "fight")
+                ? classes["icon-background-fight"]
                 : classes["icon-background"]
             } ${classes.icon} ${toggle === true && classes.show}`}
-            id="fighting"
+            id="fight"
             onClick={selectHandler}
           >
             <FaFistRaised
               className={`${
-                items.some((item) => item.name === "fighting")
+                items.some((item) => item.name === "fight")
                   ? classes["icon-clicked"]
-                  : classes["icon-fighting"]
+                  : classes["icon-fight"]
               }`}
             />
           </div>

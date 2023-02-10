@@ -7,16 +7,11 @@ const resultSlice = createSlice({
     defenseTypes: [],
     defenseTypesArr: [],
     typesArr: [],
-
-    changed: false,
   },
   reducers: {
     setType(state, action) {
       console.log(action.payload);
       const typeData = action.payload;
-
-      state.changed = true;
-
       state.types = Object.values(typeData);
       console.log(state.types);
       state.typesArr = Object.entries(state.types[0]);
@@ -26,9 +21,9 @@ const resultSlice = createSlice({
       console.log(action.payload);
       const typeData = action.payload;
 
-      state.changed = true;
       const second = Object.values(typeData);
       const first = state.types;
+      console.log(first);
 
       for (let key in second[0]) {
         if (second[0][key] < first[0][key]) {
@@ -43,12 +38,24 @@ const resultSlice = createSlice({
       console.log("defense");
       const defenseTypeData = action.payload;
 
-      state.changed = true;
-
       state.defenseTypes = Object.values(defenseTypeData);
       console.log(state.defenseTypes);
       state.defenseTypesArr = Object.entries(state.defenseTypes[0]);
       console.log(state.defenseTypesArr);
+    },
+    setSecondDefenseType(state, action) {
+      console.log(action.payload);
+      const secondDefenseTypeData = action.payload;
+
+      const secondDefense = Object.values(secondDefenseTypeData);
+      const firstDefense = state.defenseTypes;
+
+      for (let key in secondDefense[0]) {
+        secondDefense[0][key] = firstDefense[0][key] * secondDefense[0][key];
+      }
+      state.defenseTypesArr = Object.entries(secondDefense[0]);
+      console.log(state.defenseTypesArr);
+      state.defenseTypesArr.map((item) => console.log(item));
     },
   },
 });

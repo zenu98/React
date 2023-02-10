@@ -3,6 +3,8 @@ import { useSelector } from "react-redux";
 const ResultPage = () => {
   const result = useSelector((state) => state.result.typesArr);
   const defenseResult = useSelector((state) => state.result.defenseTypesArr);
+  const fourArrDefense = [];
+  const pointFourArrDefense = [];
   const twoArrOffense = [];
   const twoArrDefense = [];
   const oneArrOffense = [];
@@ -35,6 +37,10 @@ const ResultPage = () => {
       pointFiveArrDefense.push(defenseResult[i][0]);
     } else if (defenseResult[i][1] === 0) {
       zeroDefense.push(defenseResult[i][0]);
+    } else if (defenseResult[i][1] === 4) {
+      fourArrDefense.push(defenseResult[i][0]);
+    } else if (defenseResult[i][1] === 0.25) {
+      pointFourArrDefense.push(defenseResult[i][0]);
     }
   }
 
@@ -107,6 +113,21 @@ const ResultPage = () => {
           </div>
           <div className={classes.textbox}>
             <div className={classes.title}>방어</div>
+            {fourArrDefense.length > 0 && (
+              <div className={classes.content}>
+                <div className={classes.number}>4x</div>
+                <div>
+                  {fourArrDefense.map((item) => (
+                    <img
+                      className={classes.type}
+                      src={`img/${item}.png`}
+                      alt={`${item}`}
+                      key={`${item}`}
+                    />
+                  ))}
+                </div>
+              </div>
+            )}
             {twoArrDefense.length > 0 && (
               <div className={classes.content}>
                 <div className={classes.number}>2x</div>
@@ -142,6 +163,21 @@ const ResultPage = () => {
                 <div className={classes.number}>0.5x</div>
                 <div>
                   {pointFiveArrDefense.map((item) => (
+                    <img
+                      className={classes.type}
+                      src={`img/${item}.png`}
+                      alt={`${item}`}
+                      key={`${item}`}
+                    />
+                  ))}
+                </div>
+              </div>
+            )}
+            {pointFourArrDefense.length > 0 && (
+              <div className={classes.content}>
+                <div className={classes.number}>0.25x</div>
+                <div>
+                  {pointFourArrDefense.map((item) => (
                     <img
                       className={classes.type}
                       src={`img/${item}.png`}

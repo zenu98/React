@@ -2,75 +2,96 @@ import { resultActions } from "./result-slice";
 
 export const fetchTypeData = (type) => {
   return async (dispatch) => {
-    const fetchData = async () => {
-      console.log(type.name);
+    const fetchFirstOffenseData = async () => {
+      console.log("첫번째 공격 속성", type.name);
       const response = await fetch(
         `https://pokemon-8a1dd-default-rtdb.firebaseio.com/offense/${type.name}.json`
       );
       if (!response.ok) {
         throw new Error("error");
       }
-      const data = await response.json();
+      const firstOffenseData = await response.json();
 
-      return data;
+      return firstOffenseData;
     };
-    const fetchDefenseData = async () => {
-      console.log(type.name);
+    const fetchFirstDefenseData = async () => {
+      console.log("첫번째 방어 속성", type.name);
       const response = await fetch(
         `https://pokemon-8a1dd-default-rtdb.firebaseio.com/defense/${type.name}.json`
       );
       if (!response.ok) {
         throw new Error("error");
       }
-      const defenseData = await response.json();
+      const firstDefenseData = await response.json();
 
-      return defenseData;
+      return firstDefenseData;
     };
     try {
-      const typeData = await fetchData();
-      const defenseTypeData = await fetchDefenseData();
-      console.log(defenseTypeData);
+      const firstOffenseTypeData = await fetchFirstOffenseData();
+      const firstDefenseTypeData = await fetchFirstDefenseData();
+      console.log("첫번째 공격 속성 받음!", firstOffenseTypeData);
+      console.log("첫번째 방어 속성 받음!", firstDefenseTypeData);
 
       dispatch(
         resultActions.setType({
-          typeData,
+          firstOffenseTypeData,
         })
       );
       dispatch(
         resultActions.setDefenseType({
-          defenseTypeData,
+          firstDefenseTypeData,
         })
       );
     } catch (error) {
-      throw new Error("error");
+      throw new Error("첫번째 오류");
     }
   };
 };
 
 export const fetchTypeDatas = (type) => {
   return async (dispatch) => {
-    const fetchData = async () => {
-      console.log(type.name);
+    const fetchSecondOffenseData = async () => {
+      console.log("두번째 공격 속성", type.name);
       const response = await fetch(
         `https://pokemon-8a1dd-default-rtdb.firebaseio.com/offense/${type.name}.json`
       );
       if (!response.ok) {
         throw new Error("error");
       }
-      const data = await response.json();
+      const secondOffenseData = await response.json();
 
-      return data;
+      return secondOffenseData;
+    };
+    const fetchSecondDefenseData = async () => {
+      console.log("두번째 방어 속성", type.name);
+      const response = await fetch(
+        `https://pokemon-8a1dd-default-rtdb.firebaseio.com/defense/${type.name}.json`
+      );
+      if (!response.ok) {
+        throw new Error("error");
+      }
+      const secondDefenseData = await response.json();
+
+      return secondDefenseData;
     };
     try {
-      const typeDataTwo = await fetchData();
-      console.log(typeDataTwo);
+      const secondOffenseTypeData = await fetchSecondOffenseData();
+      const secondDefenseTypeData = await fetchSecondDefenseData();
+      console.log("두번째 공격 속성 받음!", secondOffenseTypeData);
+      console.log("두번째 방어 속성 받음!", secondDefenseTypeData);
+
       dispatch(
         resultActions.setTypeTwo({
-          typeDataTwo,
+          secondOffenseTypeData,
+        })
+      );
+      dispatch(
+        resultActions.setSecondDefenseType({
+          secondDefenseTypeData,
         })
       );
     } catch (error) {
-      throw new Error("error");
+      throw new Error("두번째 오류");
     }
   };
 };

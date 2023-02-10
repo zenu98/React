@@ -8,16 +8,16 @@ import { elementActions } from "../../store/element-slice";
 const Element = () => {
   const type = useSelector((state) => state.element.items);
   console.log(type[0]);
-  const result = useSelector((state) => state.result.types);
-  console.log(result.bug);
-  console.log(result);
+
   const dispatch = useDispatch();
-  const fetchHandler = () => {
-    console.log("Clicked!");
-    dispatch(fetchTypeData(type[0]));
+  const fetchHandler = async () => {
+    console.log("첫번째 속성 dispatch!");
+
+    await dispatch(fetchTypeData(type[0]));
 
     if (type.length === 2) {
-      dispatch(fetchTypeDatas(type[1]));
+      console.log("두번째 속성 dispatch!");
+      await dispatch(fetchTypeDatas(type[1]));
     }
   };
 
