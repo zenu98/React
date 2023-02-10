@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import classes from "./ElementList.module.css";
 import elementSlice, { elementActions } from "../../store/element-slice";
+import { TiDownload } from "react-icons/ti";
 import { GoFlame } from "react-icons/go";
 import { IoWater, IoEllipseSharp } from "react-icons/io5";
 import {
@@ -79,8 +80,11 @@ const ElementList = (props) => {
           src="img/pixelball.png"
           onClick={clickHandler}
         />
-        {toggle && <button onClick={props.onFetch}>제출</button>}
       </div>
+
+      {toggle && (
+        <TiDownload className={classes["submit-btn"]} onClick={props.onFetch} />
+      )}
 
       <div className={`${classes["icons-wrapper"]}`}>
         <div className={`${toggle ? classes.icons : classes.disicons}`}>

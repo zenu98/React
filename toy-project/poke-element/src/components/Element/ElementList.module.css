@@ -73,15 +73,23 @@
   overflow: hidden;
   border-radius: 50%;
   vertical-align: bottom;
-  width: 80px;
-  height: 80px;
+
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-
   transition: 0.3s;
   z-index: 6;
+}
+.submit-btn {
+  cursor: pointer;
+  position: absolute;
+  transform: translate(-50%, -50%);
+  top: 60%;
+  left: 50%;
+  z-index: 6;
+  width: 80px;
+  height: 80px;
 }
 
 .menu-btn-in {
