@@ -2,7 +2,6 @@ import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import classes from "./ElementList.module.css";
 import elementSlice, { elementActions } from "../../store/element-slice";
-import { TiDownload } from "react-icons/ti";
 import { GoFlame } from "react-icons/go";
 import { IoWater, IoEllipseSharp } from "react-icons/io5";
 import {
@@ -29,6 +28,7 @@ const ElementList = (props) => {
   const dispatch = useDispatch();
   const items = useSelector((state) => state.element.items);
   const [toggle, setToggle] = useState(false);
+
   const clickHandler = () => {
     setToggle((prev) => !prev);
   };
@@ -83,7 +83,41 @@ const ElementList = (props) => {
       </div>
 
       {toggle && (
-        <TiDownload className={classes["submit-btn"]} onClick={props.onFetch} />
+        <img
+          className={
+            items.length > 0
+              ? classes["arrow-btn-active"]
+              : classes["arrow-btn"]
+          }
+          onClick={() => {
+            props.onFetch();
+          }}
+          alt="arrow"
+          src="img/arrow.png"
+        />
+      )}
+      {props.isLoading && (
+        <img
+          className={classes["loading"]}
+          src="img/Spinner.gif"
+          alt="로딩중"
+          width="5%"
+        />
+      )}
+
+      {toggle && items.length > 0 && (
+        <img
+          className={classes.indicateone}
+          src={`img/${items[0].name}.png`}
+          alt={`${items[0].name}`}
+        />
+      )}
+      {toggle && items.length > 1 && (
+        <img
+          className={classes.indicatetwo}
+          src={`img/${items[1].name}.png`}
+          alt={`${items[1].name}`}
+        />
       )}
 
       <div className={`${classes["icons-wrapper"]}`}>
@@ -105,6 +139,7 @@ const ElementList = (props) => {
               }`}
             />
           </div>
+
           <div
             className={`${
               items.some((item) => item.name === "water")

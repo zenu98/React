@@ -81,15 +81,55 @@
   transition: 0.3s;
   z-index: 6;
 }
-.submit-btn {
+.arrow-btn {
   cursor: pointer;
   position: absolute;
-  transform: translate(-50%, -50%);
-  top: 60%;
+  transform: translate(-50%, -50%) rotate(180deg);
+  top: 62%;
+  left: 50%;
+  z-index: 1;
+  opacity: 0.5;
+  width: 80px;
+  height: 80px;
+}
+.arrow-btn-active {
+  cursor: pointer;
+  position: absolute;
+  transform: translate(-50%, -50%) rotate(180deg);
+  top: 62%;
   left: 50%;
   z-index: 6;
   width: 80px;
   height: 80px;
+  opacity: 0.7;
+}
+.arrow-btn-active:hover {
+  opacity: 1;
+}
+.indicateone {
+  position: absolute;
+  transform: translate(-50%, -50%);
+  top: 35%;
+  left: 44%;
+  z-index: 6;
+  width: 110px;
+  height: 40px;
+}
+.indicatetwo {
+  position: absolute;
+  transform: translate(-50%, -50%);
+  top: 35%;
+  left: 56%;
+  z-index: 6;
+  width: 110px;
+  height: 40px;
+}
+.loading {
+  position: absolute;
+  transform: translate(-50%, -50%);
+  top: 40%;
+  left: 50%;
+  z-index: 6;
 }
 
 .menu-btn-in {
@@ -149,96 +189,78 @@
   z-index: 2;
 }
 .icon-background {
-  background: white;
+  background: rgba(255, 255, 255, 1);
 }
 
 .icon-background-fire {
-  border: 4px solid white;
   background: #ff4422;
   box-shadow: 0px 1px 5px rgba(0, 0, 0, 0.75);
 }
 .icon-background-water {
-  border: 4px solid white;
   background: #3399ff;
   box-shadow: 0px 1px 5px rgba(0, 0, 0, 0.75);
 }
 .icon-background-electric {
-  border: 4px solid white;
   background: #f8be32;
   box-shadow: 0px 1px 5px rgba(0, 0, 0, 0.75);
 }
 .icon-background-grass {
-  border: 4px solid white;
   background: #77cc55;
   box-shadow: 0px 1px 5px rgba(0, 0, 0, 0.75);
 }
 .icon-background-ice {
-  border: 4px solid white;
   background: #66ccff;
   box-shadow: 0px 1px 5px rgba(0, 0, 0, 0.75);
 }
 .icon-background-fight {
-  border: 4px solid white;
   background: #bb5544;
   box-shadow: 0px 1px 5px rgba(0, 0, 0, 0.75);
 }
 .icon-background-poison {
-  border: 4px solid white;
   background: #aa5599;
   box-shadow: 0px 1px 5px rgba(0, 0, 0, 0.75);
 }
 .icon-background-ground {
-  border: 4px solid white;
   background: #ddbb55;
   box-shadow: 0px 1px 5px rgba(0, 0, 0, 0.75);
 }
 .icon-background-flying {
-  border: 4px solid white;
   background: #8899ff;
   box-shadow: 0px 1px 5px rgba(0, 0, 0, 0.75);
 }
 .icon-background-psychic {
-  border: 4px solid white;
   box-shadow: 0px 1px 5px rgba(0, 0, 0, 0.75);
   background: #ff5599;
 }
 .icon-background-bug {
-  border: 4px solid white;
   box-shadow: 0px 1px 5px rgba(0, 0, 0, 0.75);
   background: #aabb22;
 }
 .icon-background-rock {
-  border: 4px solid white;
   box-shadow: 0px 1px 5px rgba(0, 0, 0, 0.75);
   background: #bbaa66;
 }
 .icon-background-ghost {
-  border: 4px solid white;
   background: #6666bb;
   box-shadow: 0px 1px 5px rgba(0, 0, 0, 0.75);
 }
 .icon-background-dragon {
-  border: 4px solid white;
   background: #7766ee;
   box-shadow: 0px 1px 5px rgba(0, 0, 0, 0.75);
 }
 .icon-background-dark {
-  border: 4px solid white;
   background: #3c2d23;
   box-shadow: 0px 1px 5px rgba(0, 0, 0, 0.75);
 }
 .icon-background-steel {
-  border: 4px solid white;
   background: #8e8e9f;
   box-shadow: 0px 1px 5px rgba(0, 0, 0, 0.75);
 }
 .icon-background-fairy {
-  border: 4px solid white;
   background: #ee99ee;
   box-shadow: 0px 1px 5px rgba(0, 0, 0, 0.75);
 }
 .icon-background-normal {
-  border: 4px solid white;
   background: #aa9;
   box-shadow: 0px 1px 5px rgba(0, 0, 0, 0.75);
 }
@@ -493,6 +515,11 @@
 }
 .show:nth-child(18) {
   transform: translate(-50px, -300px);
+}
+
+.tooltip-fire {
+  background-color: white;
+  z-index: 6;
 }
 
 @keyframes backfadeout {

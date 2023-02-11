@@ -8,16 +8,19 @@ import TypePage from "./TypePage";
 const Layout = () => {
   const ref = useRef(null);
 
-  const onControlsClick = () => {
+  const onControlsClickMain = () => {
     ref.current.scrollToSlide(1);
+  };
+  const onControlsClickType = () => {
+    ref.current.scrollToSlide(2);
   };
   return (
     <FullPage ref={ref}>
       <Slide>
-        <Main onClick={onControlsClick} />
+        <Main onClick={onControlsClickMain} />
       </Slide>
       <Slide>
-        <TypePage />
+        <TypePage onClick={onControlsClickType} />
       </Slide>
       <Slide>
         <ResultPage />

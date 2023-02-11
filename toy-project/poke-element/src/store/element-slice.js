@@ -18,9 +18,10 @@ const elementSlice = createSlice({
       state.changed = true;
       if (!existingItem) {
         console.log("없다");
-        state.items.push({
-          name: newItem.name,
-        });
+        if (state.items.length < 2)
+          state.items.push({
+            name: newItem.name,
+          });
       } else {
         console.log("있다");
         state.items = state.items.filter((item) => item.name !== newItem.name);

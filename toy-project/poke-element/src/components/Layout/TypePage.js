@@ -1,9 +1,9 @@
 import classes from "./TypePage.module.css";
 import Element from "../Element/Element";
-const TypePage = () => {
+const TypePage = (props) => {
   return (
     <div className={classes.background}>
-      <Element />
+      <Element onClick={props.onClick} />
     </div>
   );
 };
