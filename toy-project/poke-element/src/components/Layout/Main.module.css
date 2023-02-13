@@ -12,19 +12,42 @@
   background-image: url("../../../public/img/day.png");
 }
 
+.titlecontainer {
+  display: flex;
+  flex-direction: column;
+  margin: 150px auto 0 auto;
+}
+
 .titlebox {
   display: flex;
   flex-direction: column;
-
-  margin: 160px auto 0 auto;
+  margin-bottom: 40px;
 }
 
 .title {
-  margin: 0 auto;
+  margin: 0 auto 0 auto;
   font-size: 80px;
   font-family: "bitbit";
   background: linear-gradient(#dcaf21, #c16a37);
   color: transparent;
+  -webkit-background-clip: text;
+  filter: drop-shadow(3px 7px #333);
+}
+.arrowimg {
+  width: 44px;
+  height: 44px;
+}
+.menubox {
+  margin: 0 100px 10px auto;
+  display: flex;
+  align-items: center;
+}
+.menu {
+  cursor: pointer;
+  font-size: 40px;
+  font-family: "bitbit";
+  background: linear-gradient(#dcaf21, #c16a37);
+  color: rgba(0, 0, 0, 0);
   -webkit-background-clip: text;
   filter: drop-shadow(3px 5px #333);
 }
