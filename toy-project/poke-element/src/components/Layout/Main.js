@@ -16,6 +16,9 @@ const Main = (props) => {
   const handleMouseOutTwo = () => {
     setIsHoveringTwo(false);
   };
+  const goGithub = (url) => {
+    window.open(url, "_blank", "noopener, noreferrer");
+  };
 
   return (
     <div className={classes.background}>
@@ -54,7 +57,7 @@ const Main = (props) => {
 
           <span
             className={classes.menu}
-            onClick={props.onClick}
+            onClick={() => goGithub("https://github.com/zenu98")}
             onMouseOver={handleMouseOverTwo}
             onMouseOut={handleMouseOutTwo}
           >
