@@ -1,13 +1,3 @@
-const person = {
-  name: "seo",
-  age: 21,
-  hobbies: ["sports", "music"],
-};
+const userName = "SeoJaeHee";
 
-let arr: string[];
-arr = ["sports"];
-
-console.log(person.name);
-for (const i of person.hobbies) {
-  console.log(i);
-}
+console.log(userName);
