@@ -1,70 +1,71 @@
-# Getting Started with Create React App
+## 레퍼지토리 소개
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+React 첫 입문 부터 개인 프로젝트 제작까지 총 집합
 
-## Available Scripts
+## 단어 맞추기 퍼즐
+### [동물단어퍼즐](https://github.com/zenu98/ReactStudy/tree/main/toy-project/word-puzzle)
+첫번째 개인 제작 토이 프로젝트
+개발기간: 2023.01 ~ 2023.02
 
-In the project directory, you can run:
 
-### `npm start`
+## 기술 스택
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+### ✔️Frond-end
+<img src="https://img.shields.io/badge/React-61DAFB?style=for-the-badge&logo=React&logoColor=black"><img src="https://img.shields.io/badge/Css-1572B6?style=for-the-badge&logo=Css&logoColor=white"><img src="https://img.shields.io/badge/Redux-764ABC?style=for-the-badge&logo=Redux&logoColor=purple">
+### ✔️Back-end
+<img src="https://img.shields.io/badge/Firebase-FFCA28?style=for-the-badge&logo=Firebase&logoColor=white">
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
 
-### `npm test`
+## 화면구성
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+- ### 첫 화면
+![word1](https://github.com/zenu98/ReactStudy/assets/90780629/9b26683a-3d58-4afb-8976-fc69970c5f8a)
 
-### `npm run build`
+동적으로 문구와 시작 버튼이 나오도록 하였다.
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+- ### 단어 개수 선택
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+![word2](https://github.com/zenu98/ReactStudy/assets/90780629/7fbd385c-595a-4b23-b523-af7d5dacabc6)
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+동물 단어의 개수가 2개짜리와 3개짜리로 나뉘어져 있어서 그것을 선택할 수  있다.
 
-### `npm run eject`
+- ### 단어 맞추기
+![word3](https://github.com/zenu98/ReactStudy/assets/90780629/9f7411bd-f05c-4be4-a9d7-4daf1a728be3)
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+선택한 단어 개수에 맞는 동물 이름들이 한 글자씩 무작위로 배열되어 있으며 이를 맞추는 게임이다.
+퍼즐 상단에는 단어들을 새로고침하는 버튼과 홈으로 리다이렉트 하는 버튼을 구현하였다.
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+## 포켓몬스터 속성 계산기
+두번째 개인 제작 토이 프로젝트
+개발기간: 2023.02 ~ 2023.03
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+## 기술 스택
 
-## Learn More
+### ✔️Frond-end
+<img src="https://img.shields.io/badge/React-61DAFB?style=for-the-badge&logo=React&logoColor=black"><img src="https://img.shields.io/badge/Css-1572B6?style=for-the-badge&logo=Css&logoColor=white"><img src="https://img.shields.io/badge/Redux-764ABC?style=for-the-badge&logo=Redux&logoColor=purple">
+### ✔️Back-end
+<img src="https://img.shields.io/badge/Firebase-FFCA28?style=for-the-badge&logo=Firebase&logoColor=white">
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+## 화면구성
 
-### Code Splitting
+- ### 첫 화면
+![word1](https://github.com/zenu98/ReactStudy/assets/90780629/9b26683a-3d58-4afb-8976-fc69970c5f8a)
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+동적으로 문구와 시작 버튼이 나오도록 하였다.
 
-### Analyzing the Bundle Size
+- ### 단어 개수 선택
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+![word2](https://github.com/zenu98/ReactStudy/assets/90780629/7fbd385c-595a-4b23-b523-af7d5dacabc6)
 
-### Making a Progressive Web App
+동물 단어의 개수가 2개짜리와 3개짜리로 나뉘어져 있어서 그것을 선택할 수  있다.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+- ### 단어 맞추기
+![word3](https://github.com/zenu98/ReactStudy/assets/90780629/9f7411bd-f05c-4be4-a9d7-4daf1a728be3)
 
-### Advanced Configuration
+선택한 단어 개수에 맞는 동물 이름들이 한 글자씩 무작위로 배열되어 있으며 이를 맞추는 게임이다.
+퍼즐 상단에는 단어들을 새로고침하는 버튼과 홈으로 리다이렉트 하는 버튼을 구현하였다.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
 
-### Deployment
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
