@@ -37,6 +37,7 @@ React 첫 입문 부터 개인 프로젝트 제작까지 총 집합
 
 
 ## 포켓몬스터 속성 계산기
+### [포켓몬 상성 계산기](https://github.com/zenu98/ReactStudy/tree/main/toy-project/poke-element)
 두번째 개인 제작 토이 프로젝트
 개발기간: 2023.02 ~ 2023.03
 
