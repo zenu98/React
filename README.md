@@ -4,8 +4,11 @@ React 첫 입문 부터 개인 프로젝트 제작까지 총 집합
 
 ## 단어 맞추기 퍼즐
 ### [동물단어퍼즐](https://github.com/zenu98/ReactStudy/tree/main/toy-project/word-puzzle)
-첫번째 개인 제작 토이 프로젝트
-개발기간: 2023.01 ~ 2023.02
+- 첫번째 개인 제작 토이 프로젝트
+- 모든 개발은 전부 직접 구현.
+- 개발기간: 2023.01 ~ 2023.02
+
+- 카카오톡 녹화기능을 사용했는데 녹화프로그램 문제인지 격자무늬가 보이는 문제 양해바람
 
 
 ## 기술 스택
@@ -34,6 +37,77 @@ React 첫 입문 부터 개인 프로젝트 제작까지 총 집합
 
 선택한 단어 개수에 맞는 동물 이름들이 한 글자씩 무작위로 배열되어 있으며 이를 맞추는 게임이다.
 퍼즐 상단에는 단어들을 새로고침하는 버튼과 홈으로 리다이렉트 하는 버튼을 구현하였다.
+
+- #### Firebase 데이터 다루기
+
+![image](https://github.com/zenu98/ReactStudy/assets/90780629/2c722322-cd68-408f-a010-eabeadf24e89)
+
+```javascript
+ useEffect(() => {
+    setIsLoading(true);
+    const dataArr = [];
+    const query = `?orderBy="length"&equalTo=${props.wordLength}`;
+
+    fetch(
+      "https://word-puzzle-efb93-default-rtdb.firebaseio.com/animals.json" +
+        query
+    )
+      .then((response) => response.json())
+      .then((responseData) => {
+        for (let i = responseData.length - 1; i > 0; i--) {
+          let j = Math.floor(Math.random() * (i + 1));
+          [responseData[i], responseData[j]] = [
+            responseData[j],
+            responseData[i],
+          ];
+        }
+        const loadedAnimals = [];
+        for (const key in responseData) {
+          if (loadedAnimals.length < 8) {
+            loadedAnimals.push({
+              id: key,
+              name: responseData[key].name,
+              description: responseData[key].description,
+              length: responseData[key].length,
+            });
+          } else break;
+        }
+        dataListHandler(loadedAnimals);
+
+        for (let k = 0; k < loadedAnimals.length; k++) {
+          for (let i = 0; i <= loadedAnimals[k].name.length - 1; i++) {
+            const chr = loadedAnimals[k].name.substring(i, i + 1);
+            dataArr.push({
+              id: Math.random().toString(),
+              word: chr,
+            });
+          }
+        }
+        dataArr.sort(() => Math.random() - 0.5);
+        setChrList(dataArr);
+        setIsLoading(false);
+      });
+  }, [dataListHandler, props.wordLength]);
+```
+firebase 데이터에서 선택한 동물이름의 단어개수에 따라(2글자 or 3글자) 이름들을 받아와 각 단어를 한글자씩 나누어 무작위로 배열시키는 부분이다.
+
+- #### Portal을 사용한 백드롭 모달 구현
+```javascript
+const Modal = (props) => {
+  return (
+    <React.Fragment>
+      {ReactDOM.createPortal(
+        <Backdrop onConfirm={props.onConfirm} />,
+        document.getElementById("backdrop-root")
+      )}
+      {ReactDOM.createPortal(
+        <ModalOverlay onConfirm={props.onConfirm} />,
+        document.getElementById("overlay-root")
+      )}
+    </React.Fragment>
+  );
+};
+```
 
 
 ## 포켓몬스터 속성 계산기
