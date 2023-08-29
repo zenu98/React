@@ -112,8 +112,11 @@ const Modal = (props) => {
 
 ## 포켓몬스터 속성 계산기
 ### [포켓몬 상성 계산기](https://github.com/zenu98/ReactStudy/tree/main/toy-project/poke-element)
-두번째 개인 제작 토이 프로젝트
-개발기간: 2023.02 ~ 2023.03
+- 두번째 개인 제작 토이 프로젝트
+- 개발기간: 2023.02 ~ 2023.03
+![image](https://github.com/zenu98/ReactStudy/assets/90780629/ca187c3b-9f5c-4e11-bcf1-30fad3a5b59e)
+- 포켓몬스터라는 게임은 다양한 속성들을 가진 포켓몬이 있고 각 속성마다 다른 속성과 상성관계가 잡혀있다.
+- 위 표와 같은 상성관계를 계산할 수 있는 기능과 한눈에 보여지도록 하는 웹페이지를 제작하였다.
 
 ## 기술 스택
 
